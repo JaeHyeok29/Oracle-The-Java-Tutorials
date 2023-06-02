@@ -706,9 +706,15 @@ double : 3.1415927410125732
 
 
 
-// TODO : null type이라는 의미가 맞나?
+### Reference type
+
+// TODO : 내용 추가 필요 - class, interface, instance 설명 나오기 전이라도 다른 설명을 위해서 필요함
+
+
 
 ### null Type
+
+// TODO : null type이라는 의미가 맞나?
 
   * Reference type( class instance)은 아니지만, reference type에 사용 가능한 special type
   * 값의 존재 여부를 나타내는 것 외에는 사용할 경우가 없음
@@ -1632,6 +1638,124 @@ public class ArithmeticOperatorTest {
 
 
 
+##### 문제. 다음 코드는 primitive data type에서 정수에 대해 산술 연산이다. 다음 연산을 적용한 코드를 완성하라.
+
+* byte = byte + byte
+* short = short + short
+* int = int + int
+* long = long + long
+* short = byte + short
+* int = byte + short
+* int = short + int
+* int = int + long
+* long = int + long
+
+~~~java
+package example;
+
+public class ArithmeticOperatorTest2 {
+    public static void main(String[] args) {
+        byte byteValue1 = 2;
+        byte byteValue2 = 5;
+        byte byteResult;
+        short shortValue1 = 2;
+        short shortValue2 = 5;
+        short shortResult;
+        int intValue1 = 2;
+        int intValue2 = 5;
+        int intResult;
+        long longValue1 = 2;
+        long longValue2 = 5;
+        long longResult;
+
+        byteResult = byteValue1 + byteValue2;
+        System.out.println(byteResult + " = " + byteValue1 + " + " + byteValue2);
+
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+    } 
+}
+
+~~~
+
+* 모든 계산이 문제가 없나? 문제가 있다면 어디서 어떤 문제가 생기나요?
+* 어떠한 규칙은 가지고 있다고 생각이 드나? 이유는?
+* type casting(형 변환)에 대해 아시나요? 
+  * [Type conversion](https://en.wikipedia.org/wiki/Type_conversion) 참고
+
+
+
+
+##### 문제. 앞에 문제와 동일하게 float과 double에 대해서 결과를 예측해보고 확인하라.
+
+* float = float + float
+* double  = double + double
+* float = float + double
+* double = double + double
+
+~~~java
+package example;
+
+public class ArithmeticOperatorTest3 {
+    public static void main(String[] args) {
+        float floatValue1 = 2.1f;
+        float floatValue2 = 5.1f;
+        float floatResult;
+        double doubleValue1 = 2.1d;
+        double doubleValue2 = 5.1d;
+        double doubleResult;
+
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+    }
+}
+~~~
+
+* 결과가 예측과 동일한가?
+
+
+
+##### 문제. char type에서 다음 조건을 이용해서 문자를 출력하라.
+
+* c1은 'A' 이다.
+* c2는 'B'이다.
+* c3는 'B'의 값보다 1 큰 문자이다.
+* c4는 c2의 값보다 1 큰 문자이다. 
+
+~~~java
+package example;
+
+public class ArithmeticOperatorTest4 {
+    public static void main(String[] args) {
+      	char c1 = 'A';
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+
+				System.out.println("c1 = " + c1);
+				System.out.println("c2 = " + c2);
+				System.out.println("c3 = " + c3);
+				System.out.println("c4 = " + c4);
+    }
+}
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+c1 = A
+c2 = B
+c3 = B
+c4 = C
+~~~
+
+* 동일하게 출력되나요? 아니면, 오류가 발생하나요? 
+* 오류의 원인은?
+
+  
+
 ### The Unary Operators(단항 연산자)
 
 * 하나의 피연산자
@@ -1651,34 +1775,41 @@ public class ArithmeticOperatorTest {
 |    --    | decrement operator(감소 연산자), 피연산자 값을 1 감소시킴    |    변경됨     |
 |    !     | 논리 보수 연산자, 부울 값을 반전시킴                         |   영향 없음   |
 
-**예제**
+##### 예제. 다음 코드를 보고, 단항 연산자에 대해 알아보자.
 
 ~~~java
+package example;
+
 class UnaryDemo {
 
     public static void main(String[] args) {
 
-        int result = +1;
-        // result is now 1
-        System.out.println(result);
+        int result  = +1;
+        System.out.println("01 : result = +1 : " + result);
 
         result--;
-        // result is now 0
-        System.out.println(result);
+        System.out.println("02 : result-- : " + result);
 
         result++;
-        // result is now 1
-        System.out.println(result);
+        System.out.println("03 : result++ : " + result);
+
+        --result;
+        System.out.println("04 : --result : " + result);
+
+        ++result;
+        System.out.println("05 : ++result : " + result);
+
+        result = +result;
+        System.out.println("06 : result = +result : " + result);
 
         result = -result;
-        // result is now -1
-        System.out.println(result);
+        System.out.println("07 : result = -result : " + result);
 
         boolean success = false;
-        // false
-        System.out.println(success);
-        // true
-        System.out.println(!success);
+        System.out.println("08 : success = false : " + success);
+
+        boolean booleanResult = !success;
+        System.out.println("09 : !success : " + booleanResult);
     }
 }
 ~~~
@@ -1686,19 +1817,27 @@ class UnaryDemo {
 결과는 아래와 같다.
 
 ~~~sh
-1
-0
-1
--1
-false
-true
+01 : result = +1 : 1
+02 : result-- : 0
+03 : result++ : 1
+04 : --result : 0
+05 : ++result : 1
+06 : result = +result : 1
+07 : result = -result : -1
+08 : success = false : false
+09 : !success : true
 ~~~
 
+* 단항 연산자 + 는 언제 사용될까요?
+* 단항 연산자 +, -, ! 과 ++, --의 차이점은 무엇인가요?
+
+* 단항 연산자 +,-,!은 ++, --와 달리 다른 연산과 함께 사용되었다. ++,--와 같이 사용할때는 어떻게 되는가? 이유는? 
 
 
-#### The increment/decrement operators
 
-* Increment/decrement operator는 피연산자의 앞 또는 뒤에 붙여서 사용
+#### The increment/decrement operators(증가/감소 연산자)
+
+* 증가/감소 연산자는 피연산자의 앞 또는 뒤에 붙여서 사용
 
 * 최종 결과는 피연산자 값을 1 증가시키거나 1 감소시킴
 
@@ -1707,24 +1846,24 @@ true
   * 앞에 붙으면, 더 큰 연산이 적용되기 전에 단항 연산자가 처리되고
   * 위에 붙으면, 더 큰 연산이 적용된 후에 단항 연산자가 처리됨
 
-**예제**
+
+
+##### 예제. 다음 코드를 보고, 증가 연산자의 동작에 대해 알아보자.
 
 ~~~java
-class PrePostDemo {
+package example;
+
+public class PrePostIncrementDemo {
     public static void main(String[] args){
         int i = 3;
+        System.out.println("01 : " + i);
         i++;
-        // prints 4
-        System.out.println(i);
+        System.out.println("02 : " + i);
         ++i;
-        // prints 5
-        System.out.println(i);
-        // prints 6
-        System.out.println(++i);
-        // prints 6
-        System.out.println(i++);
-        // prints 7
-        System.out.println(i);
+        System.out.println("03 : " + i);
+        System.out.println("04 : " + ++i);
+        System.out.println("05 : " + i++);
+        System.out.println("06 : " + i);
     }
 }
 ~~~
@@ -1732,18 +1871,23 @@ class PrePostDemo {
 동작 결과는 아래와 같다. 자신이 생각하는 동작과 일치하는지 확인해 보자.
 
 ~~~sh
-4
-5
-6
-6
-7
+01 : 3
+02 : 4
+03 : 5
+04 : 6
+05 : 6
+06 : 7
 ~~~
 
+* 04에서도 1 증가시키고 05에서 1증가 시켰지만, 출력이 동일하다. 이유는?
 
+  
 
-##### 문제. 다음의 결과를 예상해 보고 동작 후 맞는지 확인해 보라.
+##### 예제. 다음의 결과를 예상해 보고, 실행 후 비교해 보자.
 
 ~~~java
+package example;
+
 class IncrementTest {
     public static void main(String[] args){
       int [] anArray = {1, 2, 3, 4};
@@ -1757,11 +1901,17 @@ class IncrementTest {
 }
 ~~~
 
+* 실행에 문제는 없나요?
+* 결과가 예상과 일치하나요?
 
 
-##### 문제. result1과 result2의 순서를 변경하였다.  예상되는 결과와 동작 후 맞는지 확인해 보라.
+
+##### 예제. result1과 result2의 순서를 변경하였다.  예상되는 결과와 실행 후 비교해 보자.
 
 ~~~java
+package example;
+
+
 class IncrementTest {
     public static void main(String[] args){
       int [] anArray = {1, 2, 3, 4};
@@ -1774,13 +1924,20 @@ class IncrementTest {
     }
 }
 ~~~
+
+* 실행에 문제는 없나요?
+* 결과가 예상과 일치하나요?
+
+
+
+// TODO : increment/decrement 예제 추가
 
 
 
 ### The Equality and Relational Operators(관계 연산자)
 
-* 피연산자 간의 관계(크거나 작거나 같거나 혹은 다르거나) 결정
-* 수학에서는 "="이 같음을 나타내지만, Java에서는 "=="이 같음을 나타냄
+* 피연산자 간의 관계(크거나 작거나 같거나 혹은 다르거나) 결정한다.
+* 수학에서는 "="이 같음을 나타내지만, Java에서는 "=="이 같음을 나타낸다.
 
 
 
@@ -1797,24 +1954,23 @@ class IncrementTest {
 
 
 
-**예제**
+##### 예제. 다음 코드를 보고, 관계 연산자에 대해 알아보자.
+
+
 
 ~~~java
-class ComparisonDemo {
+package example;
 
+public class RelationalOperatorDemo {
     public static void main(String[] args){
         int value1 = 1;
         int value2 = 2;
-        if(value1 == value2)
-            System.out.println("value1 == value2");
-        if(value1 != value2)
-            System.out.println("value1 != value2");
-        if(value1 > value2)
-            System.out.println("value1 > value2");
-        if(value1 < value2)
-            System.out.println("value1 < value2");
-        if(value1 <= value2)
-            System.out.println("value1 <= value2");
+        System.out.println("01 : value1 == value2 : " + (value1 == value2));
+        System.out.println("02 : value1 != value2 : " + (value1 != value2));
+        System.out.println("03 : value1 > value2 : " + (value1 > value2));
+        System.out.println("04 : value1 < value2 : " + (value1 < value2));
+        System.out.println("05 : value1 <= value2 : " + (value1 <= value2));
+        System.out.println("06 : value1 >= value2 : " + (value1 >= value2));
     }
 }
 ~~~
@@ -1822,10 +1978,15 @@ class ComparisonDemo {
 결과는 아래와 같다.
 
 ~~~shell
-value1 != value2
-value1 <  value2
-value1 <= value2
+01 : value1 == value2 : false
+02 : value1 != value2 : true
+03 : value1 > value2 : false
+04 : value1 < value2 : true
+05 : value1 <= value2 : true
+06 : value1 >= value2 : false
 ~~~
+
+* value1과 value2를 바꿔서 실행해 보자.
 
 
 
@@ -1833,7 +1994,65 @@ value1 <= value2
 
 ##### 문제. 관계 연산자의 피연산자는 모든 data type이 가능한가? 직접 코드를 작성해 compile 과정에 error가 발생하는지 확인해 보자.
 
+* 피연산자는 primitive type, reference type, null type, array가 될 수 있다.
+
+~~~java
+package example;
+
+public class RelationalOperatorTest {
+    public static void main(String[] args) {
+        byte b1 = 1;
+        byte b2 = 2;
+
+        System.out.println("01 : b1 == b2 : " + (b1 == b2));
+        System.out.println("01 : b1 != b2 : " + (b1 != b2));
+        System.out.println("01 : b1 <  b2 : " + (b1 <  b2));
+        System.out.println("01 : b1 >  b2 : " + (b1 >  b2));
+        System.out.println("01 : b1 <= b2 : " + (b1 <= b2));
+        System.out.println("01 : b1 >= b2 : " + (b1 >= b2));
+    }
+}
+~~~
+
+정상적으로 수행되고, 결과는 아래와 같이 출력된다.
+
+~~~java
+01 : b1 == b2 : false
+01 : b1 != b2 : true
+01 : b1 <  b2 : true
+01 : b1 >  b2 : false
+01 : b1 <= b2 : true
+01 : b1 >= b2 : false
+~~~
+
+*  다른 data type에 대해서도 적용해 본다.
+
+
+
 ##### 문제. 관계 연산자에 사용되는 두 개의 피연산자가 서로 다른 data type일 경우에도 가능한가? 가능하다면, 어떻게 처리될까?
+
+* 서로 다르지만 비교 가능한 data type은? 이유는?
+* 서로 다르면서 비교가 되지 않은 data type은? 이유는?
+
+~~~java
+package example;
+
+public class RationalOperatorTest2 {
+    public static void main(String[] args) {
+        byte b1 = 1;
+        float b2 = 2;
+
+        System.out.println("01 : b1 == b2 : " + (b1 == b2));
+        System.out.println("01 : b1 != b2 : " + (b1 != b2));
+        System.out.println("01 : b1 <  b2 : " + (b1 <  b2));
+        System.out.println("01 : b1 >  b2 : " + (b1 >  b2));
+        System.out.println("01 : b1 <= b2 : " + (b1 <= b2));
+        System.out.println("01 : b1 >= b2 : " + (b1 >= b2));
+    }
+}
+~~~
+
+결과는 실행해서 확인해 본다.
 
 
 
@@ -1841,136 +2060,243 @@ value1 <= value2
 
 * 두 개의 부울 식으로 AND나 OR 연산을 수행
 
+##### 예제. 다음 코드를 보고, and와 or 연산에 대해 알아보자.
+
   ~~~java
-  class ConditionalOperatorDemo1 {
+  package example;
   
-      public static void main(String[] args){
-          int value1 = 1;
-          int value2 = 2;
-          if((value1 == 1) && (value2 == 2))
-              System.out.println("value1 is 1 AND value2 is 2");
-          if((value1 == 1) || (value2 == 1))
-              System.out.println("value1 is 1 OR value2 is 1");
+  public class ConditionalOperatorDemo {
+      public static void main(String[] args) {
+          int v1 = 1;
+          int v2 = 2;
+          System.out.println("v1 is 1 AND v2 is 2 : " + ((v1 == 1) && (v2 == 2)));
+          System.out.println("v1 is 1 OR v2 is 1 : " + ((v1 == 1) || (v2 == 1)));
       }
   }
   ~~~
 
 
 
-* Short-circuiting 동작으로 첫 번째 피연산자에 의해 결과가 결정된 경우, 두 번째 피연산자를 계산하지 않음
+* [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation)으로 첫 번째 피연산자에 의해 결과가 결정된 경우, 두 번째 피연산자를 계산하지 않음
+  
   * expression1 && expression2에서 expression1이 false인 경우, expression2는 계산하지 않음
+  
   * expression1 || expression2에서 expression1이 true인 경우, expression2는 계산하지 않음
-  ~~~java
-  class ConditionalOperatorDemo2 {
+  
+    
+  
+#####  예제. 다음 코드를 보고, short-circuit evaluation에 대해 알아보자.
+~~~java
+package example;
+
+public class ShortCircuitEvaluationDemo {
     public static void main(String[] args) {
-      int value1 = 1;
-      int value2 = 2;
-  
-      if ((++value1 == 2) && (++value2 == 3)) {
-        System.out.println("(++value1 == 2) && (++value2 == 3) is true");
-      }
-      System.out.println("value1 is " + value1 + ", value2 is " + value2);
-  
-      if ((value1++ == 3) && (value2++ == 4)) {
-        System.out.println("(value1++ == 3) && (value2++ == 4) is true");
-      }
-      System.out.println("value1 is " + value1 + ", value2 is " + value2);
-  
-      if ((++value1 == 4) || (++value2 == 4)) {
-        System.out.println("(++value1 == 4) && (++value2 == 4) is true");
-      }
-      System.out.println("value1 is " + value1 + ", value2 is " + value2);
-  
-      if ((++value1 == 4) || (++value2 == 4)) {
-        System.out.println("(++value1 == 4) && (++value2 == 4) is true");
-      }
-      System.out.println("value1 is " + value1 + ", value2 is " + value2);
+        int v1 = 1;
+        int v2 = 2;
+
+        System.out.println("01 : v1 : " + v1);
+        System.out.println("02 : v2 : " + v2);
+        System.out.println("03 : (++v1 == 2) && (++v2 == 3) : "
+                + ((++v1 == 2) && (++v2 == 3)));
+        System.out.println("04 : v1 : " + v1);
+        System.out.println("05 : v2 : " + v2);
+
+        System.out.println("06 : (v1++ == 3) && (v2++ == 4) : "
+                + ((v1++ == 3) && (v2++ == 4)));
+        System.out.println("07 : v1 : " + v1);
+        System.out.println("08 : v2 : " + v2);
+
+        System.out.println("09 : (++v1 == 4) || (++v2 == 4) : "
+                + ((++v1 == 4) || (++v2 == 4)));
+        System.out.println("10 : v1 : " + v1);
+        System.out.println("11 : v2 : " + v2);
+
+        System.out.println("12 : (++v1 == 4) || (++v2 == 4) : "
+                + ((++v1 == 4) || (++v2 == 4)));
+        System.out.println("13 : v1 : " + v1);
+        System.out.println("14 : v2 : " + v2);
     }
-  }
+}
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+01 : v1 : 1
+02 : v2 : 2
+03 : (++v1 == 2) && (++v2 == 3) : true
+04 : v1 : 2
+05 : v2 : 3
+06 : (v1++ == 3) && (v2++ == 4) : false
+07 : v1 : 3
+08 : v2 : 3
+09 : (++v1 == 4) || (++v2 == 4) : true
+10 : v1 : 4
+11 : v2 : 3
+12 : (++v1 == 4) || (++v2 == 4) : true
+13 : v1 : 5
+14 : v2 : 4
+~~~
+
+* 03에서 v1에 증가 연산자가 적용되었나요? v2에 증가 연산자가 적용되었나요? 이유는?
+
+* 06에서 v1에 증가 연산자가 적용되었나요? v2에 증가 연산자가 적용되었나요? 이유는?
+
+* 09에서 v1에 증가 연산자가 적용되었나요? v2에 증가 연산자가 적용되었나요? 이유는?
+
+* 12에서 v1에 증가 연산자가 적용되었나요? v2에 증가 연산자가 적용되었나요? 이유는?
+
   
-  ~~~
 
 #### Shorthand if else (Ternary Operator : 삼항 연산자)
 
 * If-then-else 문을 식으로 표현
+  ~~~java
+  if 조건식 ? true일때 실행식 : false일때 실행식
+  ~~~
 * 세 개의 피연산자가 필요한 삼항 연산자
+
+  * 조건식, true인 경우 실행문, false인 경우 실행문
+
+
 
 
 
 ##### 예제. 다음 코드를 보고 삼항 연산자의 동작에 대해 확인해 보자.
 
   ~~~java
-  class ConditionalDemo2 {
+package example;
 
-      public static void main(String[] args){
-          int value1 = 1;
-          int value2 = 2;
-          int result;
-          boolean someCondition = true;
-          result = someCondition ? value1 : value2;
+public class TernaryOperatorDemo {
+    public static void main(String[] args){
+        int v1 = 1;
+        int v2 = 2;
+        int result;
 
-          System.out.println(result);
-      }
-  }
+        result = v1 < v2? v1 : v2;
+
+        System.out.println(result);
+    }
+}
   ~~~
 
 * if-then-else는 뒤에서 배움
-* 삼항 연산자의 정의에 따라서 someCondition이 true 인 경우에는 value1을 반환하고, false인 경우에는 value2를 반환
+* 삼항 연산자의 정의에 따라 v1이 v2보다 적은 경우  v1을 반환하고, 그렇지 않은 경우 v2를 반환
 * 결과는?
-* someCondition의 초깃값을 false로 변경했을때, 결과는?
+* v1과 v2 값을 바꾸면?
+
+
+
+##### 문제. 삼항 연산자만을 사용해서 원하는 달의 날수를 출력하라.
+
+* 2월은 28일로 한다.
+
+~~~java
+package example;
+
+public class TernaryOperatorTest {
+    public static void main(String[] args) {
+        int month = 3;
+				      
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+
+        System.out.println(month + "월은 " + day + "입니다.");
+    }
+}
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+3월은 31입니다.
+~~~
+
+
 
 #### instanceof
 
-* Object가 피연산자로 주어진 type인지 비교
+* Object가 주어진 type인지 확인
 * Object가 특정한 class의 instance(extends 포함)인지, interface의 implements 인지 확인
 * 조건문을 이용해 특정 type에 대한 확인이 필요한 경우 사용
 
 ##### 예제. 다음 코드를 보고 instanceof 연산자의 동작일 이해해 보자.
 
   ~~~java
-  class InstanceofDemo {
-      public static void main(String[] args) {
+package example;
 
-          Parent obj1 = new Parent();
-          Parent obj2 = new Child();
+class InstanceofDemo {
+    public static void main(String[] args) {
 
-          System.out.println("obj1 instanceof Parent: "
-              + (obj1 instanceof Parent));
-          System.out.println("obj1 instanceof Child: "
-              + (obj1 instanceof Child));
-          System.out.println("obj1 instanceof MyInterface: "
-              + (obj1 instanceof MyInterface));
-          System.out.println("obj2 instanceof Parent: "
-              + (obj2 instanceof Parent));
-          System.out.println("obj2 instanceof Child: "
-              + (obj2 instanceof Child));
-          System.out.println("obj2 instanceof MyInterface: "
-              + (obj2 instanceof MyInterface));
-      }
-  }
+        Parent obj1 = new Parent();
+        Parent obj2 = new Child();
+        EnumType1 enum1 = EnumType1.REFERENCE;
+        EnumType2 enum2 = EnumType2.CLASS;
 
-  class Parent {}
-  class Child extends Parent implements MyInterface {}
-  interface MyInterface {}
+        System.out.println("01 : obj1 instanceof Parent: "
+            + (obj1 instanceof Parent));
+        System.out.println("02 : obj1 instanceof Child: "
+            + (obj1 instanceof Child));
+        System.out.println("03 : obj1 instanceof MyInterface: "
+            + (obj1 instanceof MyInterface));
+        System.out.println("04 : obj2 instanceof Parent: "
+            + (obj2 instanceof Parent));
+        System.out.println("05 : obj2 instanceof Child: "
+            + (obj2 instanceof Child));
+        System.out.println("06 : obj2 instanceof MyInterface: "
+            + (obj2 instanceof MyInterface));
+        System.out.println("07 : enum1 instanceof EnumType1: "
+            + (enum1 instanceof EnumType1));
+        System.out.println("08 : enum2 instanceof EnumType2: "
+            + (enum2 instanceof EnumType2));
+        // System.out.println("09 : class1 instanceof EnumType2: "
+        //     + (enum1 instanceof EnumType2));
+        // System.out.println("10 : enum2 instanceof EnumType1: "
+        //     + (enum2 instanceof EnumType1));
+    }
+}
+
+enum EnumType1{
+    PRIMITIVE,
+    REFERENCE
+}
+
+enum EnumType2 {
+    CLASS,
+    INTERFACE,
+    ENUM
+}
+
+class Parent {}
+class Child extends Parent implements MyInterface {}
+interface MyInterface {}
   ~~~
 
 결과는 아래와 같다.
 
   ~~~sh
-  obj1 instanceof Parent: true
-  obj1 instanceof Child: false
-  obj1 instanceof MyInterface: false
-  obj2 instanceof Parent: true
-  obj2 instanceof Child: true
-  obj2 instanceof MyInterface: true
+  01 : obj1 instanceof Parent: true
+  02 : obj1 instanceof Child: false
+  03 : obj1 instanceof MyInterface: false
+  04 : obj2 instanceof Parent: true
+  05 : obj2 instanceof Child: true
+  06 : obj2 instanceof MyInterface: true
+  07 : enum1 instanceof EnumType1: true
+  08 : enum2 instanceof EnumType2: true
   ~~~
 
 * obj1은 단순 Parent class로서 첫 번째 확인에서만 true
+
 * obj2는 Parent class에서 확장하고, MyInterface interface를 구현한 것으로 모든 확인에서 true
 
+* enum1은 EnumType1이므로 true
 
+* enum2는 EnumType2이므로 true
 
-// TODO : 문제 추가 필요
+* 그렇다면, enum1 instanceof EnumType2는 어떻게 될까?
+
+  // TODO : 확인 필요
 
 
 
@@ -1995,37 +2321,245 @@ value1 <= value2
 
 
 
+#### Bit Shift 연산자
+
+* 비트단위로 왼쪽이나 오른쪽으로 이동
+* 빈자리는 이전 값을 유지 하거나 0으로 채워짐
+
+![shift_operator](./images/shift_operator.png)
+
+
+
+##### 예제. 다음 코드를 보고, bit shift 연산자에 대해 알아보자.
+
+~~~java
+package example;
+
+public class ShiftOperatorDemo {
+    public static void main(String[] args) {
+        int x = -123456789;
+        int y =  123456789;
+        String s;
+				
+        s = Integer.toBinaryString(x);
+        System.out.println("01 : x       =   "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(x << 2);
+        System.out.println("02 : x <<  2 = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(x >> 2);
+        System.out.println("03 : x >>  2 =   "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(x >>> 2);
+        System.out.println("04 : x >>> 2 =   "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+
+        System.out.println("");
+        s = Integer.toBinaryString(y);
+        System.out.println("05 : y       =   "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(y << 2);
+        System.out.println("06 : y <<  2 = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(y >> 2);
+        System.out.println("07 : y >>  2 =   "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(y >>> 2);
+        System.out.println("08 : y >>> 2 =   "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+    }
+}
+
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+01 : x       =   11111000101001000011001011101011
+02 : x <<  2 = 11100010100100001100101110101100
+03 : x >>  2 =   11111110001010010000110010111010
+04 : x >>> 2 =   00111110001010010000110010111010
+
+05 : y       =   00000111010110111100110100010101
+06 : y <<  2 = 00011101011011110011010001010100
+07 : y >>  2 =   00000001110101101111001101000101
+08 : y >>> 2 =   00000001110101101111001101000101
+~~~
+
+
+
+##### 문제. 다음에 주어진 값을 bit shift 연산자를 이용해 계산해 보자.
+
+* $2^3 = ?$
+* $2^{30}=?$
+* $2^{40}=?$
+
+~~~
+package example;
+
+public class ShiftOperatorTest {
+    public static void main(String[] args) {
+        System.out.println("2^3 = " ...);
+        System.out.println("2^30 = " ...);
+        System.out.println("2^40 = " ...);
+    }
+}
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+2^3 = 16
+2^30 = 2147483648
+2^40 = 2199023255552
+~~~
+
+
+
+#### Bit 연산자
+
+* bit 단위로 &(and), |(or), ^(xor), ~(not) 적용
+
+  
+
+![bit operator](./images/bit operator.png)
+
+
+
+##### 예제. 다음 코드를 보고, 비트 연산자에 대해 알아보자.
+
+~~~java
+package example;
+
+public class BitOperatorDemo {
+    public static void main(String[] args) {
+        int x = -123456789;
+        int y = 123456789;
+        String s;
+
+        s = Integer.toBinaryString(x);
+        System.out.println("01 : x          = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(y);
+        System.out.println("02 : y          = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(x & y);
+        System.out.println("03 : x & y = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(x | y);
+        System.out.println("04 : x | y = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(x ^ y);
+        System.out.println("05 : x ^ y = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(~x);
+        System.out.println("06 : ~x         = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+        s = Integer.toBinaryString(~y);
+        System.out.println("07 : ~y         = "
+                + ("00000000000000000000000000000000" + s).substring(s.length()));
+
+    }
+}
+
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+01 : x          = 11111000101001000011001011101011
+02 : y          = 00000111010110111100110100010101
+03 : x & y = 00000000000000000000000000000001
+04 : x | y = 11111111111111111111111111111111
+05 : x ^ y = 11111111111111111111111111111110
+06 : ~x         = 00000111010110111100110100010100
+07 : ~y         = 11111000101001000011001011101010
+~~~
+
+
+
+##### 문제. 다음에서 설명하는 내용을 구현하라.
+
+* 자리는 총 32개 있습니다.
+* 손님이 들어올때마다 0~31번 자리를 내어 줍니다.
+* 다음의 각 과정마다 32개 자리가 비워져 있는지 출력합니다.
+  * 손님이 들어와 5번 자리로 안내 합니다.
+  * 손님이 들어와 2번 자리로 안내 합니다.
+  * 손님이 들어와 18번 자리로 안내 합니다.
+  * 5번 손님이 나갑니다.
+  * 2번과 18번 손님이 함께 나갑니다.
+
+
+
+~~~java
+package example;
+
+public class BitOperatorTest {
+    public static void main(String[] args) {
+        int seat = 0;
+        String zeros = "00000000000000000000000000000000";
+        String s;
+
+        s = Integer.toBinaryString(seat);
+        System.out.println("01 : " + (zeros + s).substring(s.length()));
+
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+
+
+        s = Integer.toBinaryString(seat);
+        System.out.println("06 : " + (zeros + s).substring(s.length()));
+    }
+}
+~~~
+
+
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+01 : 00000000000000000000000000000000
+02 : 00000000000000000000000000100000
+03 : 00000000000000000000000000100100
+04 : 00000000000001000000000000100100
+05 : 00000000000001000000000000000100
+06 : 00000000000000000000000000000000
+~~~
+
+
+
 ### Compound Assignment Operators(복합 할당 연산자)
 
-* Assignment operator와 arithmetic operator를 조합하여 산술 연산과 할당을 함께 수행
+#### Assignment operator와 arithmetic operator 조합
 
-  * +=, -=, *=, /=, %=
+* +=, -=, *=, /=, %=
 
-  * 변수에 값을 더하는 연산은 자주 사용된다.
+* 변수에 값을 더하는 연산은 자주 사용된다.
 
-    아래 코드는 int형 변수에 값을 더하는 연산으로 1로 초기화된 변수에 20을 더해 21로 만든다.
+  아래 코드는 int형 변수에 값을 더하는 연산으로 1로 초기화된 변수에 20을 더해 21로 만든다.
 
-    ```
-    int customerCount;
-    customerCount = 1;
-    customerCount = customerCount + 20;
-    ```
+  ```
+  int customerCount;
+  customerCount = 1;
+  customerCount = customerCount + 20;
+  ```
 
-  * 합성 할당 연산자를 사용할 수 있습니다
+* 합성 할당 연산자를 사용할 수 있습니다
 
-    위의 코드는 하나의 값만 더하므로 복잡하지 않을 수 있다. 아래의 코드를 보자. array의 index를 계산하기 위해 식이 사용되고, 이를 중복해서 여러 번 사용되어 복잡하고 오류가 발생할 가능성도 커진다.
+  위의 코드는 하나의 값만 더하므로 복잡하지 않을 수 있다. 아래의 코드를 보자. array의 index를 계산하기 위해 식이 사용되고, 이를 중복해서 여러 번 사용되어 복잡하고 오류가 발생할 가능성도 커진다.
 
-    ```
-    array[(i + 1) % 25] = array[(i + 1) % 25] + 20;
-    ```
+  ```
+  array[(i + 1) % 25] = array[(i + 1) % 25] + 20;
+  ```
 
-    합성 할당 연산자를 이용해 아래와 같은 단축된 형식으로 동일한 식의 중복 사용을 피할 수 있다.
+  합성 할당 연산자를 이용해 아래와 같은 단축된 형식으로 동일한 식의 중복 사용을 피할 수 있다.
 
-    ```
-    array[(i + 1) % 25] += 20;
-    ```
+  ```
+  array[(i + 1) % 25] += 20;
+  ```
 
-  * 산술 연산에 대해 단축된 형식을 사용할 수 있다
+* 산술 연산에 대해 단축된 형식을 사용할 수 있다
 
    ~~~java
    variable += expression; // variable = variable + expression;
@@ -2037,66 +2571,146 @@ value1 <= value2
 
 
 
-* Assignment operator와 bitwire(or bit shift) operator를 조합하여 비트 연산과 할당을 함께 수행
+##### 예제. 다음 코드를 보고, 복합 산술 할당 연산자에 대해 알아보자.
 
-  * <<=, >>=, >>>=, &=, ^=, |=
+~~~java
+package example;
 
-  * 비트 연산자에 대해서도 단축된 형식을 사용할 수 있다.
+public class CompoundArithmeticOperatorDemo {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 10;
 
-    ~~~java
-    package examples;
-    
-    public class TestCompoundOperator {
-        public static void main(String[] args) {
-            int x = 0xa55a5aa5;
-    
-            String binaryString = String.format("%32s",
-                    Integer.toBinaryString(x)).replace(" ", "0");
-            System.out.println("x               : " + binaryString);
-            x >>= 1;
-            binaryString = String.format("%32s",
-                    Integer.toBinaryString(x)).replace(" ", "0");
-            System.out.println("x >>= 1         : " + binaryString);
-            x <<= 1;
-            binaryString = String.format("%32s",
-                    Integer.toBinaryString(x)).replace(" ", "0");
-            System.out.println("x <<= 1         : " + binaryString);
-            x >>>= 1;
-            binaryString = String.format("%32s",
-                    Integer.toBinaryString(x)).replace(" ", "0");
-            System.out.println("x >>>= 1        : " + binaryString);
-            x &= -1;
-            binaryString = String.format("%32s",
-                    Integer.toBinaryString(-1)).replace(" ", "0");
-            System.out.println("                : " + binaryString);
-            binaryString = String.format("%32s",
-                    Integer.toBinaryString(x)).replace(" ", "0");
-            System.out.println("x &= -1           " + binaryString);
-            x |= 0xa55a5aa5;
-            binaryString = String.format("%32s",
-                    Integer.toBinaryString(x)).replace(" ", "0");
-            System.out.println("x |= 0xa55a5aa5 : " + binaryString);
-        }
+        System.out.println("01 : x = " + x + ", y = " + y);
+
+        x = x + 10;
+        y += 10;
+        System.out.println("02 : x = x + 10 vs y += 10");
+        System.out.println("03 : x = " + x + ", y = " + y);
+
+        x = x - 10;
+        y -= 10;
+        System.out.println("04 : x = x - 10 vs y -= 10");
+        System.out.println("05 : x = " + x + ", y = " + y);
+
+        x = x * 10;
+        y *= 10;
+        System.out.println("06 : x = x * 10 vs y *= 10");
+        System.out.println("07 : x = " + x + ", y = " + y);
+
+        x = x / 10;
+        y /= 10;
+        System.out.println("08 : x = x / 10 vs y /= 10");
+        System.out.println("09 : x = " + x + ", y = " + y);
+
+        x = x % 3;
+        y %= 3;
+        System.out.println("10 : x = x % 3 vs y %= 3");
+        System.out.println("11 : x = " + x + ", y = " + y);
     }
-    
-    ~~~
+}
+~~~
 
-    결과는 아래와 같다.
+결과는 다음과 같이 출력된다.
 
-    ~~~sh
-    x               : 10100101010110100101101010100101
-    x >>= 1         : 11010010101011010010110101010010
-    x <<= 1         : 10100101010110100101101010100100
-    x >>>= 1        : 01010010101011010010110101010010
-                    : 11111111111111111111111111111111
-    x &= -1           01010010101011010010110101010010
-    x |= 0xa55a5aa5 : 11110111111111110111111111110111
-    ~~~
+~~~sh
+01 : x = 10, y = 10
+02 : x = x + 10 vs y += 10
+03 : x = 20, y = 20
+04 : x = x - 10 vs y -= 10
+05 : x = 10, y = 10
+06 : x = x * 10 vs y *= 10
+07 : x = 100, y = 100
+08 : x = x / 10 vs y /= 10
+09 : x = 10, y = 10
+10 : x = x % 3 vs y %= 3
+11 : x = 1, y = 1
+~~~
 
 
 
+##### 문제. Byte 또는 short에 대해서도 예제와 같이 확인해 보자.
 
-### 연습 문제
+~~~java
+package example;
+
+public class CompoundArithmeticOperatorTest {
+    public static void main(String[] args) {
+        byte x = 10;
+        byte y = 10;
+
+				...
+    }
+}
+~~~
+
+* 문제가 없나요? 문제가 생겼다면 이유를 생각해 봅시다.
+* 해결 방법은?
+
+
+
+#### Assignment operator와 bitwire(or bit shift) operator 조합
+
+* <<=, >>=, >>>=, &=, ^=, |=
+
+* 비트 연산자에 대해서도 단축된 형식을 사용할 수 있다.
+
+
+
+##### 예제. 다음 코드를 보고, 복합 할당 연산자에 대해 알아보자.
+
+  ~~~java
+  package example;
+  
+  public class CompoundBitOperatorDemo {
+      public static void main(String[] args) {
+          int originalX = -123456789;
+          int x = -123456789;
+          int y =  123456789;
+  
+          System.out.println("x        :   " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+          x = originalX;
+          x <<= 2;
+          System.out.println("x <<= 2  : " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+          x >>= 2;
+          System.out.println("x >>= 2  :     " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+          x = originalX;
+          x >>>= 2;
+          System.out.println("x >>>= 2 :     " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+          x = originalX;
+          x &= y;
+          System.out.println("y        :   " + String.format("%32s",
+                  Integer.toBinaryString(y)).replace(" ", "0"));
+          System.out.println("x &= y   :   " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+          x = originalX;
+          x |= y;
+          System.out.println("x |= y   :   " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+          x = originalX;
+          x ^= y;
+          System.out.println("x ^= y   :   " + String.format("%32s",
+                  Integer.toBinaryString(x)).replace(" ", "0"));
+      }
+  }
+  ~~~
+
+  결과는 아래와 같다.
+
+  ~~~sh
+  x        :   11111000101001000011001011101011
+  x <<= 2  : 11100010100100001100101110101100
+  x >>= 2  :     11111000101001000011001011101011
+  x >>>= 2 :     00111110001010010000110010111010
+  y        :   00000111010110111100110100010101
+  x &= y   :   00000000000000000000000000000001
+  x |= y   :   11111111111111111111111111111111
+  x ^= y   :   11111111111111111111111111111110
+  ~~~
 
 
 
@@ -2104,59 +2718,75 @@ value1 <= value2
 
 
 
-### Expressions
+### Expressions (식)
 
 * 변수, 연산자 및 method 호출 등으로 단일 값을 계산해 내는 statement의 일부
 
+* long을 제외한 정수형(byte, short, char, int) 산술연산 결과는 int 기본
+
+* long의 산술연산 결과는 long
+
+* int와 long 연산시 long, float와 double 연산시 double
+
 * expression에서 반환되는 값은 expression을 구성하는 요소들에 따라 다름
 
-  ~~~ java
-  public class ExpressionTest {
-      public static void main(String[] args) {
-          int x = 2;
-          int y = 5;
-          int z = 3;
-
-          int result1 = x + y / z;
-          int result2 = (x + y) / z;
-          int result3 = x + (y / z);
-
-          if (result1 == result2) {
-              System.out.println("+ 연산자는 / 연산자보다 우선순위가 높다.");
-          }
-
-          if (result1 == result3) {
-              System.out.println("+ 연산자는 / 연산자보다 우선순위가 낮다.");
-          }
-      }
-  }
-  ~~~
-
   * Expression x = 2 은 "=" 연산자로 구성되어 있고, 결과는 "=" 연산자의 왼쪽 피연산자와 동일한 int
-  * Expression result1 == result2는 "==" 연산자로 구성되어 있고, 결과는 "==" 연산자의 결과인 boolean
+  * Expression result1 == result2는 "==" 연산자로 구성되어 있고, 피연잔자의 data type에 상관없이 결과는  boolean
 
 * 연산자의 우선순위에 따라 계산
 
   * 앞에서 배운 연산자 우선순위에서 / 가 + 보다 높음. 따라서, 두 번째 문장이 출력됨
   * 연산자 우선순위에 따라 계산되어 문제는 없지만, 어느 연산을 먼저 해야 하는지 지정해 주는 것이 좋음
 
+##### 예제. 다음 코드를 보고, expression에 대해 알아보자.
 
 
-### Statements
+  ~~~ java
+package example;
+
+public class ExpressionDemo {
+    public static void main(String[] args) {
+        int x = 2;
+        int y = 5;
+        int z = 3;
+
+        int result1 = x + y / z;
+        int result2 = (x + y) / z;
+        int result3 = x + (y / z);
+
+        if (result1 == result2) {
+            System.out.println("01 : + 연산자는 / 연산자보다 우선순위가 높다.");
+        }
+
+        if (result1 == result3) {
+            System.out.println("02 : + 연산자는 / 연산자보다 우선순위가 낮다.");
+        }
+
+        z = y = x;
+        System.out.println("03 : x = " + x + ", y = " + y + ", z = " + z);
+    }
+}
+
+  ~~~
+
+결과는 아래와 같이 출력된다.
+
+~~~ sh
+02 : + 연산자는 / 연산자보다 우선순위가 낮다.
+03 : x = 2, y = 2, z = 2
+~~~
+
+
+
+### Statements (문)
 
 * 완전한 실행 단위
 
 * 다음의 expression을 ';'(세미콜론)으로 끝낸 경우
 
   * Assignment expressions(대입식)
-
   * ++ 또는 -- 사용
-
   * Method 호출
-
-  * 변수 선언
-
-    // TODO : tutorial에서는 object creation expression을 예로 들었지만, assignment expression과 동일한 내용으로 변경
 
   ~~~java
   // assignment statement
@@ -2168,42 +2798,58 @@ value1 <= value2
   // object declaration statement
   Bicycle myBike;
   ~~~
-
+  
 * Control flow statements(흐름 제어문)
 
-* Block (바로 뒤에 나옴) // TODO : 동작상은 그러한데 맞나?
+  ~~~java
+  if (x > 10) {
+    ...
+  }
+  ~~~
 
+* 변수 선언문
 
+  ~~~java
+  int x;
+  float pi = 3.141592;
+  ~~~
+
+  
 
 ### Blocks
 
-* 0개 이상의 statement를 중괄호({}) 싼 것
+* 중괄호 사이에 0개 이상의 statement를 넣을 수 있다.
 
-* 단일 명령문에 허용되는 모든 곳에서 사용 가능
+* 단일 명령문에 허용되는 모든 곳에서 사용 가능하다.
 
-* Statement와 동일하게 처리 // TODO : 맞나?
+* Local variable의 범위를 설정한다.
 
+  
 
-
-**예제**
+##### 예제. 다음 코드를 보고, block에 대해 알아보자.
 
   ~~~java
-  public class BlockTest {
+  package example;
+  
+  public class BlockDemo {
       public static void main(String[] args) {
-          boolean condition = true;
+          boolean condition1 = true;
           { // begin block 1
-              if (condition) { // begin block 2
-                  System.out.println("Condition is true.");
+              boolean condition2 = false;
+              if (condition2) { // begin block 2
+                  System.out.println("01 : Condition is true.");
               } // end block one
               else
-                  System.out.println("Condition is false.");
+                  System.out.println("02 : Condition is false.");
           }
-      }
+          //condition1 = condition2;
+      }   
   }
   ~~~
 
 * Block 1 - boolean condition = true; 의 다음 statment 자리에서 사용
 * Block 2 - if-then-else 문에서 then 실행문 자리에서 사용
+* Condition1 = condition2는 오류가 발생한다. 이유는? 
 
 
 
@@ -2268,6 +2914,45 @@ value1 <= value2
   }
   ~~~
 
+
+
+##### 문제. if-then문을 이용해 홀수와 짝수를 구분하라.
+
+~~~java
+package example;
+
+public class IfThenTest {
+    public static void main(String[] args) {
+        int x = 3;
+				int y = 4;
+
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+    }    
+}
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+3는 홀수 입니다.
+4는 짝수 입니다.
+~~~
+
+* if문이 몇개 사용되었나?
+* if문의 조건식으로는 무엇을 사용했나?
+
+**참고** 
+
+* 출력문은 아래와 같이 작성하면된다.
+
+  ~~~java
+  System.out.println(x + "는 짝수 입니다.");
+  ~~~
+
+  
+
 ### if-then-else문
 
 * if-then문과 기본 동작은 동일하지만, 조건식의 반환 값이 false인 경우에도 결정문의 끝으로 이동하는 대신 설정된 부가 실행문을 실행함
@@ -2289,6 +2974,8 @@ value1 <= value2
      System.out.println(number + "는 짝수입니다."); // 부가 실행문
   }
   ~~~
+
+
 
 * 부가 실행문에 다시 if 문이 올 수도 있음
 
@@ -2358,9 +3045,29 @@ value1 <= value2
 
 
 
-### switch문
+##### 문제. If-then-else문을 이용해 IfThenTest 코드를 수정하라.
 
-// TODO : switch 문의  case는 label인가 조건인가?
+~~~java
+package example;
+
+public class IfThenElseTest {
+    public static void main(String[] args) {
+        int x = 3;
+				int y = 4;
+
+				// 코드 작성 시작
+      
+      	// 코드 작성 끝
+    }    
+}
+~~~
+
+* 결과는 똑같이 출력되나?
+* if-then문과 어떤 차이가 있나?
+
+
+
+### switch문
 
 * if 문은 조건식의 반환 값이 true 또는 false지만 switch 문의 조건식 결괏값으로 결정
 
@@ -2369,6 +3076,8 @@ value1 <= value2
      case label1:
        ...
      case label2:
+       ...
+     case label3, label4: //java 14에서부터 지원
        ...
    }
    ~~~
@@ -2382,9 +3091,14 @@ value1 <= value2
 
 
 * if 결정문은 true일 때의 실행문과 false일 때의 부가 실행문으로 구분되지만, switch 문에서는 조건식의 결괏값 종류의 일부 수만큼 구분할 수 있음
+* Label은 조건식의 결괏값과 호환되는 type의 literal 또는 상수(final)만 가능
 
-  ~~~java
-  public class SwitchDemo {
+ ##### 예제. 다음 코드를 보고 switch문에 대해 알아 보자.
+
+~~~java
+package example;
+
+public class SwitchDemo {
     public static void main(String[] args) {
       int monthNumber = 2;
       int daysInMonth = 0;
@@ -2409,15 +3123,18 @@ value1 <= value2
           break;
       }
       System.out.println(daysInMonth);
-    }
   }
-  ~~~
+}
+~~~
 
-* Label은 조건식의 결괏값과 같은 type이거나 호환되는 literal 또는 상수(final)만 가능
+* monthNumber를 byte, short, long으로 바꾸면? 되는 경우와 안되는 경우 이유는?
+* 중간에 break 문이 빠지면? 
+* label로 명시되지 않은 값들에 대해서는 어떻게 될까?
 
 
 
 ##### 문제. SwitchDemo를 수정하여, 4를 APRIL 상수로 변경하라.
+
 ~~~java
 public class SwitchDemo {
   public static void main(String[] args) {
@@ -2436,9 +3153,11 @@ public class SwitchDemo {
 }
 ~~~
 
+* APRIL은 정수 리터럴이 아닌데 문제가 안되나?
 
 
-#### 조건식의 label 미지정 값에 대한 처리 : default
+
+#### label 미지정 값에 대한 처리 : default
 
 * 조건식의 값에 해당하는 label을 갖는 case가 존재하지 않는 모든 경우에 대한 처리가 필요한 경우, default 사용
 * default의 위치는 상관없지만, switch문의 마지막에 위치하는 것을 권장함
@@ -2456,14 +3175,15 @@ public class SwitchDemo {
 
 #### 다중 case label
 
-* Switch문의 case label은 실행의 이동 위치만 알려 줌
+* Switch문의 case label은 해당인 경우  제어의 이동 위치만 알려 줌
 * Switch문을 수행 중 다른 case label을 만나더라도 실행에 영향을 주지 않음
 
-**예제**
+##### 예제. 다음 코드를 보고, 다중 case label에 대해 알아보자.
 
 ~~~java
-public class SwitchDemoFallThrough {
+package example;
 
+public class SwitchFallThroughDemo {
     public static void main(String[] args) {
         int month = 8;
 
@@ -2480,7 +3200,6 @@ public class SwitchDemoFallThrough {
             case 10: System.out.println("October");
             case 11: System.out.println("November");
             case 12: System.out.println("December");
-                     break;
         }
    }
 }
@@ -2497,6 +3216,10 @@ October
 November
 December
 ~~~
+
+* 8이면서 August만 출력하지 않는 이유는?
+* default가 없어도 문제 없나?
+* break문이 없어도 문제 없나?
 
 
 
@@ -2517,12 +3240,6 @@ December
 4. break는 switch문 내부 수행을 종료시킨다.
 5. break는 switch문 내 임의의 위치에 올 수 있다.
 6. default는 선택 사항이며, 임의의 위치에 올 수 있지만 case 들보다 뒤에 오는 게 좋다.
-
-
-
-// TODO : 문제 추가
-
-#### 문제. ...
 
 
 
@@ -2551,6 +3268,21 @@ class WhileDemo {
         }
     }
 }
+~~~
+
+결과는 다음과 같이 출력된다.
+
+~~~sh
+Count is: 1
+Count is: 2
+Count is: 3
+Count is: 4
+Count is: 5
+Count is: 6
+Count is: 7
+Count is: 8
+Count is: 9
+Count is: 10
 ~~~
 
 
@@ -2675,12 +3407,6 @@ do와 while 사이에 반드시 block이 되어야 하는 것은 아니지만, �
 
 
 
-// TODO : 문제 추가
-
-#### 문제. ...
-
-
-
 ### for문
 
 * 일정 값 범위를 반복하는 간결한 방법 제공
@@ -2698,21 +3424,44 @@ do와 while 사이에 반드시 block이 되어야 하는 것은 아니지만, �
   * 증분
   * 실행문 수행 후 대상 변경, index 증가 등 반복적으로 수행되는 expression
 
- #### 예제. 1에서 10까지 순차적으로 출력하라.
+
+
+##### 예제. 1에서 10까지 순차적으로 출력하라.
 
 ~~~java
-class ForDemo {
-  public static void main(String[] args){
-    for(int i=1; i<11; i++){
-      System.out.println("Count is: " + i);
+package example;
+
+public class ForStatementDemo {
+    public static void main(String[] args) {
+        for (int i = 1; i < 11; i++) {
+            System.out.println("Count is: " + i);
+        }
     }
-	}
 }
 ~~~
 
+결과는 다음과 같이 출력된다.
 
+~~~sh
+Count is: 1
+Count is: 2
+Count is: 3
+Count is: 4
+Count is: 5
+Count is: 6
+Count is: 7
+Count is: 8
+Count is: 9
+Count is: 10
+~~~
 
- #### 문제. 1에서 10까지의 합을 출력하라.
+* 앞서 본 while문과 동일한 결과를 출력한다. 무엇이 다른가? 좋은 점은 무엇인가?
+
+* for문내에 선언된 i는 어디까지 살아 있을까?
+
+  
+
+##### 문제. 1에서 10까지의 합을 출력하라.
 
 ~~~java
 class SumUsingForDemo {
@@ -2734,19 +3483,21 @@ class SumUsingForDemo {
 
 * 0.0과 1.0 사이의 0.1 간격의 실수 (0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
 
-* Java collections
+* Java collections (나중에 배움)
 
 
 
- #### 예제. 1에서 10까지 순차적으로 출력하라.
+##### 예제. 1에서 10까지 순차적으로 출력하라.
 
 ~~~java
-class FloatUsingForDemo {
-  public static void main(String[] args){
-    for(float value=0; value<=1; value+=0.1){
-      System.out.println("Count is: " + value);
+package example;
+
+public class FloatUsingForDemo {
+    public static void main(String[] args) {
+        for (float value = 0; value <= 1; value += 0.1) {
+            System.out.println("Count is: " + value);
+        }
     }
-	}
 }
 ~~~
 
@@ -2778,7 +3529,7 @@ Count is: 0.9000001
 
 
 
-#### 예제. 1에서 10까지 순차적 증가와 10에서 1로의 순차적 감소를 출력하라
+##### 예제. 1에서 10까지 순차적 증가와 10에서 1로의 순차적 감소를 출력하라
 
 ~~~java
 package examples;
@@ -2809,7 +3560,7 @@ Up : 10, Down : 1
 
 
 
-#### 문제. for문을 이용해 피보나치수열을 10번째까지 출력하라.
+##### 문제. for문을 이용해 피보나치수열을 10번째까지 출력하라.
 
 피보나치수열의 수학적 정의는 아래와 같다.
 $$
@@ -2851,6 +3602,35 @@ public class FibonacciUsingForDemo {
 
 
 
+##### 문제. 보나치수열에 배열 이용하여 10번째까지 출력하라.
+
+
+기본 코드는 아래와 같으며,  for문만 수정하도록 한다.
+
+~~~java
+package example;
+
+import java.util.Arrays;
+
+public class FibonacciTest2 {
+    public static void main(String[] args) {
+        int [] f = new int [10];
+      	// 코드 추가
+
+      	//
+        System.out.println(Arrays.toString(f));
+    }
+}
+~~~
+
+결과는 아래와 같다.
+
+~~~sh
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+~~~
+
+
+
 #### Enhanced for문
 
 * 동일한 과정을 반복하는 iteration을 위해 지원
@@ -2858,16 +3638,18 @@ public class FibonacciUsingForDemo {
 
 
 
- #### 예제. 1에서 10까지를 담고 있는 배열을 출력하라.
+##### 예제. 1에서 10까지를 담고 있는 배열을 출력하라.
 
 ~~~java
-class EnhancedForDemo {
-  public static void main(String[] args){
-    int[] numbers = {1,2,3,4,5,6,7,8,9,10};
-    for(int item : numbers){
-      System.out.println("Number is: " + item);
+package example;
+
+public class EnhancedForDemo {
+    public static void main(String[] args) {
+        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        for (int item : numbers) {
+            System.out.println("Number is: " + item);
+        }
     }
-	}
 }
 ~~~
 
@@ -2888,7 +3670,14 @@ Number is: 10
 
 
 
-#### 토론. Enhanced for문을 사용하면 무엇이 편리한가? 혹은 무엇이 불편한가?
+#### 생각해 보기
+
+##### 물음. Enhanced for문을 사용하면 무엇이 편리한가? 혹은 무엇이 불편한가?
+
+* 나열되어 있는 요소들을 순차적 접근할때 필요한 것은?
+* 나열되어 있는 요소들을 비순차적으로 접근할때 필요한 것은?
+* 일반 for문이 필요한 경우는?
+* enhanced for문이 필요한 경우는?
 
 
 
@@ -2897,10 +3686,14 @@ Number is: 10
 * 현재 실행 중인 block의 끝으로 이동한다. 단, 여기에서 block은 switch문을 구성하는  block이거나 반복문(for, while, do-while)의 실행문이 block인 경우를 말함
 * switch문 설명에서 break문의 사용을 확인함
 
-#### 예제. 주어진 배열에서 특정 값이 몇 번째에 있는지 찾아서 출력하라.
+
+
+##### 예제. 다음 코드를 보고, 주어진 배열에서 특정 값이 몇 번째에 있는지 찾아서 출력되는지 확인해 보자.
 
 ~~~java
-class BreakDemo {
+package example;
+
+public class BreakDemo {
     public static void main(String[] args) {
 
         int[] arrayOfInts = { 32, 87, 3, 589, 12, 1076, 2000, 8, 622, 127 };
@@ -2962,18 +3755,18 @@ break문이 실행되면 해당 block을 빠져나오게 되는데, 여기서 if
 
 
 
-##### 예제. 2차원 배열에서 주어진 값을 찾아라.
-
-먼저 break문을 label 없이 구현해 보자.
+##### 예제. 다음 코드를 보고, 2차원 배열에서 주어진 값을 찾아 출력한다.
 
 ~~~java
-class BreakWithLabelDemo {
+package example;
+
+public class LabeledBreakDemo {
     public static void main(String[] args) {
 
         int[][] arrayOfInts = {
-            { 32, 87, 3, 589 },
-            { 12, 1076, 2000, 8 },
-            { 622, 127, 77, 955 }
+                { 32, 87, 3, 589 },
+                { 12, 1076, 2000, 8 },
+                { 622, 127, 77, 955 }
         };
         int searchfor = 12;
 
@@ -2982,16 +3775,15 @@ class BreakWithLabelDemo {
         boolean foundIt = false;
 
         for (i = 0; i < arrayOfInts.length; i++) {
-            for (j = 0; j < arrayOfInts[i].length;
-                 j++) {
+            for (j = 0; j < arrayOfInts[i].length; j++) {
                 if (arrayOfInts[i][j] == searchfor) {
                     foundIt = true;
                     break;
                 }
             }
 
-          	if (foundIt) {
-              break;
+            if (foundIt) {
+                break;
             }
         }
 
@@ -3017,16 +3809,20 @@ Found 12 at 1, 0
 
 
 
+##### 문제. 위 코드를 labeled break문을 사용하여 수정하라.
+
 위 코드를 label을 이용한 break문으로 수정하면 아래와 같다.
 
 ~~~java
-class BreakWithLabelDemo {
+package example;
+
+public class LabeledBreakTest {
     public static void main(String[] args) {
 
         int[][] arrayOfInts = {
-            { 32, 87, 3, 589 },
-            { 12, 1076, 2000, 8 },
-            { 622, 127, 77, 955 }
+                { 32, 87, 3, 589 },
+                { 12, 1076, 2000, 8 },
+                { 622, 127, 77, 955 }
         };
         int searchfor = 12;
 
@@ -3034,17 +3830,9 @@ class BreakWithLabelDemo {
         int j = 0;
         boolean foundIt = false;
 
-    search:
-        for (i = 0; i < arrayOfInts.length; i++) {
-            for (j = 0; j < arrayOfInts[i].length;
-                 j++) {
-                if (arrayOfInts[i][j] == searchfor) {
-                    foundIt = true;
-                    break search;
-                }
-            }
-        }
+      	// 코드 작성 시작
 
+       // 코드 작성 끝
         if (foundIt) {
             System.out.println("Found " + searchfor + " at " + i + ", " + j);
         } else {
@@ -3054,11 +3842,14 @@ class BreakWithLabelDemo {
 }
 ~~~
 
+* Labeled break문으로 얻을 수 있는 이점은 무엇인가?
+* 문제점은 없나?
+
+
+
 **설명**
 
 * 주어진 값을 찾으면 break에 의해 빠져나오면서 주어진 label이 붙어 있는 반복문까지 한 번에 빠져나온다.
-
-##### 토론. Labeled break문을 사용할 경우, 이로운 점은? 문제점은 없나?
 
 
 
@@ -3136,18 +3927,5 @@ Labeled continue문은 문자열이 달라 더 이상의 추가 검색이 필요
 * return문에서 return keyword 뒤에 값을 추가할 경우, method의 수행 결괏값으로 반환된다.
 * 반환 값은 method 선언 과정에서 지정된 type과 동일하거나 호환되어야 한다.
 * 반환 값이 없는 경우, method 선언에서는 반환 type을 void로 지정해야 한다.
-
-
-
-### 정리
-
-// TODO : 내용 정리 추가
-
-
-
-## 질문과 토론
-
-// TODO : 내용 추가
-
 
 
