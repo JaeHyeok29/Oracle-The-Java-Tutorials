@@ -1,6 +1,6 @@
-# Classes(클래스) and Objects(오브젝트)
+# Classes(클래스) and Objects(객체)
 
-이번 장에서는 클래스를 사용하여 오브젝트를 만드는 방법과 오브젝트를 사용하는 방법에 대해 배운다.
+이번 장에서는 클래스를 사용하여 객체를 만드는 방법과 객체를 사용하는 방법에 대해 배운다.
 
 다음의 내용을 다룬다.
 
@@ -10,12 +10,12 @@
 
 * Objects
 
-  * 오브젝트를 만들고 사용하는 것에 대해 설명한다.
-  * 오브젝트를 instance화하는 방법과 instance에 dot(.) 연산자를 사용하여 instance의 변수 및 method에 접근하는 방법을 배운다.
+  * 객체를 만들고 사용하는 것에 대해 설명한다.
+  * 객체에 dot(.) 연산자를 사용하여 instance의 변수 및 method에 접근하는 방법을 배운다.
 
 * More on Classes
 
-  * 오브젝트 reference 와 dot 연산자를 사용한 보다 많은 클래스 활용에 대해 알아 본다.
+  * 객체 reference 와 dot 연산자를 사용한 보다 많은 클래스 활용에 대해 알아 본다.
 
 * Nested Classes(중첩 클래스)
 
@@ -109,11 +109,11 @@ class MyClass {
 }
 ~~~
 
-중괄로 표시되는 클래스 본문은 아래와 같이 클래스에서 생성된 오브젝트와 관련된 모든 코드가 포함되어 있다. 
+중괄로 표시되는 클래스 본문은 아래와 같이 클래스에서 생성된 객체와 관련된 모든 코드가 포함되어 있다. 
 
-* 새 오브젝트를 초기화 하기 위한 생성자
-* 클래스 및 해당 오브젝트의 상태를 제공하는 필드에 대한 선언
-* 해당 오브젝트의 동작을 구현하는  method
+* 새 객체를 초기화 하기 위한 생성자
+* 클래스 및 해당 객체의 상태를 제공하는 필드에 대한 선언
+* 해당 객체의 동작을 구현하는  method
 
 
 
@@ -207,57 +207,57 @@ Access modifier의 종류와 특징은 아래와 같다.
 
 
 
-예제로 확인해 보자. 
-
-아래의 코드를 작성하라.
+##### 예제. 다음 코드를 보고, access modifier가 private인 경우에 대해 알아보자.
 
 ~~~java
 // AccessModifierTest.java
 package example;
 
 class A{  
-	private int data=40;  
-	private void msg(){
-    System.out.println("Hello java");
-  }  
+  	private int data=40;  
+  	private void msg(){
+        System.out.println("Data is " + data);
+    }  
 }  
 
 public class AccessModifierTest {  
-	public static void main(String[] args){  
-    A obj=new A();  
-    System.out.println(obj.data);
-    obj.msg();
-  }  
+  	public static void main(String[] args){  
+        A obj=new A();  
+        System.out.println(obj.data);
+        obj.msg();
+    }  
 }  
 ~~~
 
-클래스 A의 필드와 method는 access modifier를 private로 주어져 있다.
-
-클래스 AccessModifierTest에 클래스 A의 instance생성하여 필드와 method에 접근하려 한다. 어떠한 결과가 나올까?
+* 클래스 A의 instance를 생성하여 필드와 method에 접근하려 한다. 어떻게 될까?
+* 클래스 A의 msg method에서 private를 제거하고 해보자. 어떻게 되나?
 
 
 
 ##### default
 
-* 패키지 내부에서만 접근 가능
+* 동일 패키지 내에 선언된 경우, 접근 가능
 
-  
 
-private 예제의 클래스 A를 아래와 같이 수정해 보자. 
+
+
+##### 예제. 다음 코드를 보고, access modifier가 default인 경우에 대해 알아보자.
+
+private 예제의 클래스 A를 같은 패키지 내 다른 파일로 생성하고, private keyword를 삭제한다.
 
 ~~~java
 // A.java
 package example;
 
 class A{  
-	int data=40;  
-	void msg(){
-    System.out.println("Hello java");
-  }  
+  	int data=40;  
+  	void msg(){
+        System.out.println("Data is " + data);
+    }  
 }  
 ~~~
 
-두 파일을 compile하면 어떤 결과가 나오는가?
+* 두 파일을 compile하면 어떤 결과가 나오는가?
 
 
 
@@ -272,15 +272,15 @@ package example2;
 import example.A;
 
 public class AccessModifierTest {  
-	public static void main(String[] args){  
-    A obj=new A();  
-    System.out.println(obj.data);
-    obj.msg();
-  }  
+  	public static void main(String[] args){  
+        A obj=new A();  
+        System.out.println(obj.data);
+        obj.msg();
+    }  
 }  
 ~~~
 
-Compile 결과는 어떠한가? 패키지를 분리하기 전과 동일한가?
+* Compile 결과는 어떠한가? 패키지를 분리하기 전과 동일한가?
 
 
 
@@ -290,6 +290,8 @@ Compile 결과는 어떠한가? 패키지를 분리하기 전과 동일한가?
 
 
 
+##### 예제. 다음 코드를 보고, access modifier가 protected인 경우에 대해 알아보자.
+
 클래스 A의 access modifier를 아래와 같이 수정해 보자.
 
 ~~~java
@@ -297,10 +299,10 @@ Compile 결과는 어떠한가? 패키지를 분리하기 전과 동일한가?
 package example;
 
 protected class A{  
-	protected int data=40;  
-	protected void msg(){
-    System.out.println("Hello java");
-  }  
+	  protected int data=40;  
+	  protected void msg(){
+        System.out.println("Data is " + data );
+    }  
 }  
 ~~~
 
@@ -327,15 +329,15 @@ package example2;
 import example.B;
 
 public class AccessModifierTest {  
-	public static void main(String[] args){  
-    A obj=new B();  
-    System.out.println(obj.data);
-    obj.msg();
-  }  
+  	public static void main(String[] args){  
+        A obj=new B();  
+        System.out.println(obj.data);
+        obj.msg();
+    }  
 }  
 ~~~
 
-Compile 결과는 어떠한가? default와 어떠한 차이가 있는가?
+* Compile 결과는 어떠한가? default와 어떠한 차이가 있는가?
 
 
 
@@ -345,19 +347,19 @@ Compile 결과는 어떠한가? default와 어떠한 차이가 있는가?
 
 
 
+##### 예제. 다음 코드를 보고, access modifier가 public인 경우에 대해 알아보자.
+
 마지막으로 클래스 A와 클래스 B를 아래와 같이 수정해 보자.
-
-
 
 ~~~java
 // A.java
 package example;
 
 public class A{  
-	public int data=40;  
-	public void msg(){
-    System.out.println("Hello java");
-  }  
+	  public int data=40;  
+	  public void msg(){
+        System.out.println("Data is " + data );
+    }  
 }  
 ~~~
 
@@ -477,7 +479,7 @@ public class Bicycle {
 
   
 
-##### 예제. Method 이름 보기
+##### 예제. 다음은 method 이름이다. 권장하는 형태로 만들어 졌는지 확인해 본다.
 
 ~~~java
 run
@@ -487,7 +489,15 @@ getFinalData
 compareTo
 setX
 isEmpty
+_getValue
+GetName
+MY_NAME
+getID
+A
+b
 ~~~
+
+* 위 이름중에서 일반적인 규칙을 따르지 않은 이름은? 어떤 것이 잘못되었나?
 
 
 
@@ -495,28 +505,55 @@ isEmpty
 
 * 클래스 내에서 동일한 이름에 다른 parameter list를 가질 수 있음을 나타낸다.
 * Method signature가 달라야 한다.
+  * Method signature란 method 이름과 parameter type list로 해당 메서드를 구분하기 위한 식별자이다.
+
+
+
+
+##### 예제. 다음 코드를 보고, 동일한 이름의 method를 여러개 정의할 수 있는 method overloading에 대해 알아보자.
 
 ~~~java
-public class DataArtist { 
-    ... 
-    public void draw(String s) { 
-        ... 
-    } 
-    public void draw(int i) { 
-        ... 
-    } 
-    public void draw(double f) { 
-        ... 
-    } 
-    public void draw(int i, 더블 f) { 
-        ... 
-    } 
+package example;
+
+public class MethodOverloadingDemo {
+    public Number sum(Integer term1, Integer term2) {
+        System.out.println("Adding integers");
+        return term1 + term2;
+    }
+
+    public Number sum(Number term1, Number term2) {
+        System.out.println("Adding numbers");
+        return term1.doubleValue() + term2.doubleValue();
+    }
+
+    public Number sum(Object term1, Object term2) {
+        System.out.println("Adding objects");
+        return term1.hashCode() + term2.hashCode();
+    }
+
+    public static void main(String[] args) {
+        MethodOverloadingDemo   demo = new MethodOverloadingDemo();
+
+        System.out.println(demo.sum(1, 2));
+        System.out.println(demo.sum(1L, 2));
+        System.out.println(demo.sum(demo, demo));
+    }
 }
 ~~~
 
-* 동일한 method 이름에 각기 다른 parameter  list를 사용함으로써 서로 다른 method signature를 가지고 있다고 할 수 있다.
-* 반환 type은 method signature에 포함되지 않으므로, 반환 type만 다를 경우 ccompile에서 에러를 발생 시킨다.
+* 코드를 실행해보고, 3개의 출력문이 어떻게 나오는지 확인해 보자.
 
+* 3개의 method가 동일하게 sum으로 정의되어 있는데 어떻게 구분할까?
+
+* 값은 sum method를 호출하였는데, 어떤 결과가 나오는가?
+
+  
+
+ ##### Method Signature
+
+* method와 parameter list의 조합 구성
+* method 선언의 일부로 method를 구분하기 위한 식별자
+* return type은 포함되지 않으므로, return type만 다를 경우 compile에서 같은 method로 인식
 
 
 
@@ -525,8 +562,8 @@ public class DataArtist {
 
 ##### Constructor(생성자)
 
-* 클래스에서 오브젝트를 생성시 호출되며
-* 생성된 오브젝트를 초기화 하는 기능을 수행함
+* 클래스에서 객체를 생성시 호출되며
+* 생성된 객체를 초기화 하는 기능을 수행함
 * 선언에 반환 type에 대한 정의는 없으며
 * 생성자 body에서 결과 반환도 없다
 
@@ -544,7 +581,7 @@ public class DataArtist {
 
 
 
-프로그램에서 Bicycle의 새로운 오브젝트를 생성하려면 new 연산자를 이용해 생성자를 호출한다.
+프로그램에서 Bicycle의 새로운 객체를 생성하려면 new 연산자를 이용해 생성자를 호출한다.
 
 ~~~java
 Bicycle myBike = new Bicycle(30, 0, 8);
@@ -552,7 +589,7 @@ Bicycle myBike = new Bicycle(30, 0, 8);
 
 
 
-new 연산자를 myBike를 위한 메모리 공간을 할당하고, 생성자를 호출해 오브젝트를 초기화 한다.
+new 연산자를 myBike를 위한 메모리 공간을 할당하고, 생성자를 호출해 객체를 초기화 한다.
 
  Bicycle 클래스에는 하나의 생성자만 정의되어 있지만, Java에서의 method overriding은 필요한 경우 추가적인 생성자를 정의할 수 있도록 지원한다.
 
@@ -576,7 +613,7 @@ Bicycle myBike = new Bicycle();
 
 
 
-Bicycle에는 두개의 생성자가 있지만, parameter의 차이로 인해 method signature가 달라 적용이 가능하다.
+Bicycle에는 두개의 생성자가 있지만, parameter list가 다르므로 선언 가능하다.
 
 동일한 parameter를 갖도록 정의한다면 compiler에서는 오류를 발생할 것이다.
 
@@ -613,45 +650,111 @@ public class DefaultConstructorTest {
 
 ### Passing information to a Method of a Constructor
 
-* Method나 생성자에 대한 선언은 해당 method나 생성자에서 요구하는 argument의 수와 type을 선언한다.
-* Parameter는 method나 생성자에서 변수로 사용되며, runtime에 전달되어 오는 argument를 초기 값으로 사용한다.
+* Method나 생성자의 선언은 해당 method나 생성자에서 요구하는 argument의 수와 type을 선언한다.
+* Parameter는 method나 생성자에서 사용되는 변수이며, runtime에 전달되어 오는 argument를  저장해 사용한다.
+
+|                          Argument                           |                          Parameter                           |
+| :---------------------------------------------------------: | :----------------------------------------------------------: |
+|           Method나 생성자가 호출될때 전달되는 값            |        Method나 생성자에서 argument를 받기 위해 선언         |
+| 호출된 method나 생성자로 값을 전달하기 위해 호출문에서 사용 | Method나 생성자 호출시 전달되어온 값들을 사용하기 위해 method나 생성자 내부에서 사용 |
+|     Method나 생성자의 정의에 따라 각 parameter에 할당됨     |             argument 값를 가지고 있는 지역 변수              |
+|                      Actual parameter                       |                       Formal parameter                       |
 
 
 
-#### 예제. 다음 코드에서 parameter와 arguement를 구분해 설명하라
-
-// TODO : 코드 및 내용 추가
+##### 예제. 다음 코드에서 parameter와 arguement를 구분해 설명하라
 
 ~~~java
 package example;
 
+public class PassingInformationDemo {
+    public Number sum(Integer term1, Integer term2) {
+        System.out.println("Adding integers");
+        return term1 + term2;
+    }
 
-public class ParameterAndArgument {
-  public static void main(String [] args) {
-  }
+    public Number sum(Number term1, Number term2) {
+        System.out.println("Adding numbers");
+        return term1.doubleValue() + term2.doubleValue();
+    }
+
+    public Number sum(Object term1, Object term2) {
+        System.out.println("Adding objects");
+        return term1.hashCode() + term2.hashCode();
+    }
+
+    public static void main(String[] args) {
+        MethodOverloadingDemo   demo = new MethodOverloadingDemo();
+        Integer i1 = 10;
+        Integer i2 = 20;
+        Double  d1 = 10.0D;
+        Double  d2 = 20.0D;
+        String  s1 = "10";
+
+        System.out.println(demo.sum(i1, i2));
+        System.out.println(demo.sum(d1, d2));
+        System.out.println(demo.sum(s1, d1));
+    }
 }
 ~~~
+
+* 코드에서 argument로 사용된 것은?
+* parameter는?
 
 
 
 #### Parameter Types
 
-* Java에서 지원하는 모든 데이터 type 사용 가능
+* Java에서 지원하는 모든 데이터 type(primitive type, reference type) 사용 가능
 
   
 
 #### Arbitrary Number of Arguments
 
-* Method의 parameter 갯수가 유동적일때, 임의 개수의 값 전달 가능
+* Variable argument(가변 인수)
+* Method에 전달되는 argument의 갯수가 유동적일때, 임의 개수의 argument 전달
+* Argument는 쉼표(,)로 구분
+* Method 내에서는 배열로 사용
 
+##### 형식
 
+* Parameter list 대신 특정 data type, 세개의 점(...), parameter list 이름으로 구성 가능
 
-##### 예제. 임의 개수의 정수를 받아 출력하라. 
+  ~~~java
+  <type> <method name>(<type>... name) {
+    ...
+  }
+  ~~~
+
+* 가변 인수 앞에는 다른 인수를 받을 수 있는  parameter 선언이 가능
+
+  ~~~java
+  <type> <method name>(<type> arg1, <type> arg2, Object... args)
+  ~~~
+
+  많이 사용되고 있는 System.out.printf 도 보자.
+  
+  ~~~java
+  public PrintStream printf(String format, Object... args)
+  ~~~
+  
+  첫번째 parameter로 String type의 format이 선언되어 있고, 두번째 parameter로 Object type의 args가 가변 길이로 선언되어 있다.
+  
+  실제 사용에서는 아래와 같이, 2개 이상의 argument를 줄 수 있다.
+  
+  ~~~java
+  System.out.printf("%s: %d, %s%n", name, idnum, address);
+  ~~~
+  
+  
+  
+
+##### 예제. 다음 코드를 복, 임의 개수의 정수를 argument로 받아 처리하는 과정을 알아보자.  
 
 ~~~java
 package examples;
 
-public class VariableArgumentTest {
+public class VariableArgumentDemo {
     public VariableArgumentTest(int... numbers) {
 
         for(int number : numbers) {
@@ -665,41 +768,94 @@ public class VariableArgumentTest {
 }
 ~~~
 
-예제는 생성자에서 임의 개수의 정수를 받아 출력한다. 
+* VariableArgumentDemo 클래스 생성자는 parameter로 int type의 numbers를 선언
+* 호출시 1, 2, 3의 argument list를 가변 argument로 전달
+* 생성자 내부에서 numbers를 배열로 처기
 
-VariableArgumentTest 클래스의 생성자는 가변 parameter로 int type의 numbers를 선언하고, 생성자에서 numbers를 이용해 생성자 호출시 받은 argument를 배열로 저장하여 사용하고 있다.
 
 
-
-많이 사용되고 있는 System.out.printf 도 보자.
-
-~~~java
-public PrintStream printf(String format, Object... args)
-~~~
-
-첫번째 parameter로 String type의 format이 선언되어 있고, 두번째 parameter로 Object type의 args가 가변 길이로 선언되어 있다.
-
-실제 사용에서는 아래와 같이, 2개 이상의 argument를 줄 수 있다.
+##### 문제. 가변 인수를 사용하여 임의 갯수의 정수를 받아 더하는 method를 구현하라.
 
 ~~~java
-System.out.printf("%s: %d, %s%n", name, idnum, address);
+package example;
+
+public class VariableArgumentSumTest {
+    public static int sum(/* 코드 삽입 */) {
+      // 코드 작성 시작
+      
+      // 코드 작성 끝
+    }
+
+    public static void main(String[] args) {
+        System.out.println("1 + 2 + 3 = " + sum(1, 2, 3));
+    }
+}
+~~~
+
+결과는 아래와 같이 출력된다.
+
+~~~sh
+1 + 2 + 3 = 6
 ~~~
 
 
+
+##### 문제. 가변 인수를 받아서 합을 구하는 method를 구현하라. 단, 입력되는 인수의 타입은 Number는 정수로 처리하고, 정수 문자열은 정수로 변환해서 처리한다.
+
+~~~
+package example;
+
+public class VariableArgumentSumTest2 {
+    public static int sum(/* 코드 삽입 */) {
+      // 코드 작성 시작
+      
+      // 코드 작성 끝
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println("sum(1, \"2\", 3.0) = " + sum(1, "2", 3.0));
+    }
+}
+
+~~~
+
+결과는 아래와 같이 출력된다.
+
+~~~sh
+sum(1, "2", 3.0) = 6
+~~~
+
+* sum호출에는 정수 , 문자열, 실수가 혼합되어 있다.
+
+* Primitive data type의 리터럴을 주었는데, 어떻게 처리되나요?
+
+* 세가지 다른 종류를  같은 가변 인수로 처리하려면?
+
+  * Method 내에서는 어떻게 구별하나요?
+
+   
 
 #### Parameter Names
 
-* Parameter 이름은 method나 생성자 호출시 전달된 인수를 참조하기 위해 사용된다.
-* 조금 더 상세히 보면, primitive type은 값을 복사하고, reference type은 해당 오브젝트를 참조할 수 있도록 지원한다.
+* Parameter 이름은 method나 생성자 호출시 전달된 argument를 참조하기 위해 사용된다.
+
+* 조금 더 상세히 보면, primitive type은 값을 복사하고, reference type은 해당 객체를 참조할 수 있도록 지원한다.
+
 * Parameter의 이름은 해당 method나 해당 생성자 내에서만 유효하다.
-* Parameter의 이름이  클래스 필드와 중복되는 경우, 클래스 필드는 가려지게 되고 추가적인 방법을 통해서만 접근 가능하다.
 
+* Parameter의 이름이  클래스 필드와 중복되는 경우, 클래스 필드는 가려지게 되는 [variable shadowing](https://en.wikipedia.org/wiki/Variable_shadowing)이 발생한다.
 
+* Variable shadowing은 추가적인 방법을 통해서만 접근 가능하다.
+
+  
+
+##### 문제. 다음 코드를 실해시키도, 문제가 있으면 수정하라.
 
  ~~~java
  package example;
  
- public class ShadowTest {
+ public class ShadowDemo {
    private int x, y, radius;
    ShadowTest() {
      x = 0;
@@ -712,8 +868,7 @@ System.out.printf("%s: %d, %s%n", name, idnum, address);
      y = y;
    }
    
- 
-  public void setRadius(int r) {
+   public void setRadius(int r) {
      radius = r;
    }
  
@@ -741,21 +896,14 @@ System.out.printf("%s: %d, %s%n", name, idnum, address);
  }
  ~~~
 
+* 어떠한 문제가 있나요? 이유는?.
 
+* variable shadowing 문제가 발생한 곳은?
 
-##### 문제. 위 코드에서 문제를 확인하고 설명해 보자. (2분)
-
-* 설정된 값과 출력된 값을 확인하라.
-
-
-
-##### 문제. 위 코드는 동작에 문제가 있다. 수정하여 정상적으로 동작하게 하라. (2분)
-
-* Shadowing  필드 해결을 위해서는 parameter의 이름을 변경하거나, 
-
-* this  키워드를 사용해 해당 오브젝트가 가지고 있는 필드임을 명시할 수 있다.
+* 해결 방법은?
 
   
+
 
 #### Passing Primitive Data Type Arguments
 
@@ -765,10 +913,12 @@ System.out.printf("%s: %d, %s%n", name, idnum, address);
 
 
 
-##### 예제. primitive data type을 method의 parameter로 사용하고, argument로 사용된 변수의 영향을 확인하라.
+##### 예제. primitive data type을 method의 parameter로 사용하고, argument로 사용된 변수의 영향을 확인해 보자.
 
 ~~~java
-public class PassPrimitiveByValue {
+package example;
+
+public class PassPrimitiveDataDemo {
 
     public static void main(String[] args) {
            
@@ -800,43 +950,86 @@ public class PassPrimitiveByValue {
 #### Passing Reference Data Type Arguments
 
 * Reference data type은 method에 값을 전달한다.
-* 즉, parameter로 넘겨져 오는 것은 argument 값으로 method 호출시에 적용되었던 오브젝트의 참조 정보이다.
+* 즉, parameter로 넘겨져 오는 것은 argument 값으로 method 호출시에 적용되었던 객체의 참조 정보이다.
 * parameter는 수명 주기를 method와 함께 가지므로, method가 반환되면 method 내부에서 사용되던 parameter도 사라진다.
 
-// TODO : 예제 보강
 
-##### 예제. Reference data type을 method의 parameter로 사용하고, argument로 사용된 변수의 영향을 확인하라.
+
+##### 예제. Reference data type을 method의 parameter로 사용하고, argument로 사용된 변수의 영향을 확인해 보자.
 
 ~~~java
-public void moveCircle(Circle circle, int deltaX, int deltaY) {
-    // code to move origin of circle to x+deltaX, y+deltaY
-    circle.setX(circle.getX() + deltaX);
-    circle.setY(circle.getY() + deltaY);
+package example;
+
+public class PassReferenceDataDemo {
+    static class Circle {
+        int x;
+        int y;
+        int radius;
+
+        Circle(int x, int y, int radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+
+        public void move(int x, int y) {
+            this.x += x;
+        		this.y += y;
+        }
+
+        public void print() {
+            System.out.println("(" + x + ", " + y + ", "  + radius + ")");
+        }
+    } 
+
+    public static void move(Circle c, int x, int y) {
+        c.move(x, y);
+    }
+
+    public static void main(String[] args) {
+        Circle circle = new Circle(10, 10, 20);
+
+        circle.print();
+
+        move(circle, 5, 5);
         
-    // code to assign a new reference to circle
-    circle = new Circle(0, 0);
+        circle.print();
+    }
 }
 ~~~
 
-* Parameter circle은 reference data type으로 moveCircle 호출시 argument로 사용된 오브젝트의 reference를 갖는다.
-* moveCircle내베엇 circle의 method를 호출함으로써 상태를 변경한다.
-  * 이때, circle은 argument 오브젝트의 reference이므로, argument 오브젝트가 수정된다.
-* 마지막으로, circle은 새로운 Circle instance를 참조하도록 변경된다.
-* moveCircle의 argument로 사용된 오브젝트는 어떻게 되었을까?
-
-// TODO : 설명을 위한 그림이 추가되면 좋을 듯함
+* primitive data type은 method 내부의 변경에 영향이 없었다. reference data type은?
+* 변경되었다면 이유는?
+* Argument로 Reference data type을 사용한경우, 위와 같이 모두 변경되는가?
 
 
 
-## Objects
+**참고**
 
-* Java 프로그램은 method를 호출하여 상호 작용하는 많은 오브젝트 생성
-* 오브젝트간 상호 작용을 통해 GUI 구현, animation 실행, network을 통한 정보 송수신 등의 다양한 작업 수행
-* 오브젝트가 생성된 작업을 완료하면 해당 리소스는 다른 오브젝트에서 사용할 수 있도록 재활용됨
+* main에서 아래와 같이 circle 클래스 instance가 생성되고, circle 변수는 이를 참조한다.
+
+![pass_reference_data_demo1](./images/pass_reference_data_demo1.png)
+
+* static void move method가 호출되면, circle을 argument로 하여 method parameter c에 참조가 복사된다.(object가 아닌 참조)
+
+![pass_reference_data_demo2](./images/pass_reference_data_demo2.png)
+
+* static void move 내에서 dot 연산자를 이용해 c가 참조하는 object의 method를 호출하여 값을 변경하게 된다.
+
+![pass_reference_data_demo3](./images/pass_reference_data_demo3.png)
+
+* Reference data type argument는 해당 int
+
+## Objects(객체)
+
+* 클래스 instance로 생성
+* Java 프로그램은 method를 호출하여 상호 작용하는 많은 객체 생성
+* 객체간 상호 작용을 통해 GUI 구현, animation 실행, network을 통한 정보 송수신 등의 다양한 작업 수행
+* 객체가 생성된 작업을 완료하면 해당 리소스는 다른 객체에서 사용할 수 있도록 재활용됨
 
 
 
-##### 예제. 오브젝트 설명을 위한 작은 프로그램이다. 작성하여 실행해 보라.
+##### 예제. 객체 설명을 위한 작은 프로그램이다. 작성하여 실행해 보라.
 
 * X축과 Y축의 위치를 나타낼 Point 클래스는 아래와 같다.
 
@@ -940,9 +1133,9 @@ Y Position of rectTwo: 72
 
 
 
-### Create Objects
+### 객체 생성하기
 
-예제를 통해 아래와 같이 오브젝트를 생성해 보았다.
+예제를 통해 아래와 같이 객체를 생성해 보았다.
 
 ~~~java
 Point originOne = new Point(23, 94);
@@ -952,17 +1145,19 @@ Rectangle rectTwo = new Rectangle(50, 100);
 
 각각의 라인은 아래의 세부분으로 구성된다.
 
-1. 선언 : 생성할 오브젝트를 위한 type과 이를 연결한 변수 선언 
-2. instance화 : new 연산자를 이용해 오브젝트 생성
-3. 초기화 : 생성된 오브젝트를 초기화하기 위해 생성자 호출
+1. 선언 : 생성할 객체 참조를 위한 변수 선언 
+2. instance화 : new 연산자를 이용해 객체 생성
+3. 초기화 : 생성된 객체를 초기화하기 위해 생성자 호출
 
 
 
-#### Declaring a Variable to Refer to an Object
+#### 객체 참조를 위한 변수 선언
 
-* 오브젝트 생성이 완료되면 이를 참조할 변수가 필요하다
+* 객체 생성이 완료되면 이를 참조할 변수가 필요하다
 
-* 앞서 변수 선언에서 본 것처럼 변수를 선언한다.
+* 앞서 변수 선언에서 본 것처럼 생성된 객체를 참조한 변수 선언
+
+* 객체 참조를 위한 변수는 생성되는 객체와 동일한 class 이거나 해당 클래스가 상속 받은 superclass 또는 interface이다. 
 
   ~~~java
   <type> <name>;
@@ -972,7 +1167,7 @@ Rectangle rectTwo = new Rectangle(50, 100);
   * primitive type의 경우, 정해져 있는 초기값으로
   * reference type의 경우, null로 초기화 됨
 
-* 변수가 선언되었다고 해서 오브젝트가 생성되는 것은 아니고, 새롭게 생성하거나 생성된 오브젝트를 참조하도록 해야 한다.
+* 변수가 선언되었다고 해서 객체가 생성되는 것은 아니고, 새롭게 생성하거나 생성된 객체를 참조하도록 해야 한다.
 
   ~~~java
   Point originOne = new Point();
@@ -981,13 +1176,13 @@ Rectangle rectTwo = new Rectangle(50, 100);
   originTwo = originOne;
   ~~~
 
-  // TODO : 그림 추가
+  ![create object](./images/create_object.png)
 
-* 참조 타입의 경우, 변수 선언 후 오브젝트를 참조하기 전에 사용하면 compile 과정에서 오류가 발생한다.
+* 참조 타입의 경우, 변수 선언 후 객체를 참조하기 전에 사용하면 compile 과정에서 오류가 발생한다.
 
+  
 
-
-##### 예제. 오브젝트 참조를 위해 사용되는 변수들에 대해 확인해 보자.
+##### 예제. 다음 코드를 보고, 객체 참조 변수 생성 후 실제 객체 참조 없이 사용해 보자.
 
 ~~~java
 package example;
@@ -1009,18 +1204,20 @@ public class CreateObjectDemo {
 
 #### Instantiating a Class
 
+클래스를 객체로 만드는 것
+
 ##### new 연산자
 
-* 오브젝트를 위한 메모리 할당
-* 오브젝트 생성자 호출을 통한 초기화
-* 생성된 오브젝트의 reference 반환 
+* 객체를 위한 메모리 할당
+* 객체 생성자 호출을 통한 초기화
+* 생성된 객체의 reference 반환 
   * 반환의 의미가 변수에 대입하기 위한 용도를 나타내는 것은 아님
 
 
 
-#### Initializing an Object
+#### 객체 초기화
 
-* new 연산자를 통해 생성 오브젝트 초기화
+* new 연산자를 통해 생성 객체 초기화
 * new 연산자 호출시 주어진 argument를 이용해 적절한 생성자 호출
 * argument type과 parameter type이 일치하지 않을 경우, 호환 가능한 parameter type을 찾아 적용
 
@@ -1028,7 +1225,7 @@ public class CreateObjectDemo {
 
 몇가지 예를 통해서 instance 생성과 초기화 과정을 보도록 하자.
 
-##### 예제. Point 오브젝트 생성을 보자.
+Point  클래스의 객체를 생성한다.
 
 ~~~java
 Point originOne = new Point(23, 94);
@@ -1036,7 +1233,13 @@ Point originOne = new Point(23, 94);
 
 ![classes_and_objects_fig1](./images/classes_and_objects_fig1.png)
 
-Rectangle 오브젝트 생성을 보자.
+* x와 y를 필드로 갖는 Point class type의 객체가 생성되고, 
+
+* originOne 변수가 생성된 객체를 참조한다.
+
+  
+
+Rectangle 객체 생성을 보자.
 
 Point는 필드로 primitive data type만을 가지는 반면에 Rectangle은 Point를 갖는다.
 
@@ -1092,7 +1295,7 @@ public class Rectangle {
 
 
 
-##### 예제. Point 오브젝트, 폭 및 높이를 받는 생성자를 확인해 보자.
+##### 예제. Point 객체, 폭 및 높이를 받는 생성자를 확인해 보자.
 
 생성자를 사용하는 코드는 아래와 같다.
 
@@ -1102,11 +1305,11 @@ Rectangle rectOne = new Rectangle(originOne, 100, 200);
 
 
 
-new 연산자는 Rectangle 오브젝트를 위한 메모리를 할당 받고, 생성자 중 주어진 argument를 처리할 수 있는 생성자를 호출한다.
+new 연산자는 Rectangle 객체를 위한 메모리를 할당 받고, 생성자 중 주어진 argument를 처리할 수 있는 생성자를 호출한다.
 
-이를 통해 생성된 오브젝트의 구성은 아래 그림과 같다.
+이를 통해 생성된 객체의 구성은 아래 그림과 같다.
 
-![classes_and_objects_fig2](./images/classes_and_objects_fig2.png)
+![create_rectangle](./images/create_rectangle.png)
 
 
 
@@ -1118,7 +1321,7 @@ new 연산자는 Rectangle 오브젝트를 위한 메모리를 할당 받고, �
 Rectangle rectTwo = new Rectangle(50, 100);
 ~~~
 
-앞에서와 동일하게 new 연산자는 메모리를 할당 받는다. Rectangle 오브젝트를 위한 argument로 폭과 높이만을 주었으므로, 생성자중 폭과 높이만을 받아 처리하는 생성자를 호출한다.
+앞에서와 동일하게 new 연산자는 메모리를 할당 받는다. Rectangle 객체를 위한 argument로 폭과 높이만을 주었으므로, 생성자중 폭과 높이만을 받아 처리하는 생성자를 호출한다.
 
 ~~~java
 public Rectangle(int w, int h) {
@@ -1128,7 +1331,7 @@ public Rectangle(int w, int h) {
 }
 ~~~
 
- 생성자에서는 argument로 폭과 높이만 주어졌으므로, Rectangle 오브젝트의 위치를 나타낼 Point 오브젝트를 생성한다.
+ 생성자에서는 argument로 폭과 높이만 주어졌으므로, Rectangle 객체의 위치를 나타낼 Point 객체를 생성한다.
 
 
 
@@ -1146,7 +1349,7 @@ Rectangle rect = new Rectangle();
 
 
 
-##### 상속 클래스에서의 초기화
+#### 상속 클래스에서의 초기화
 
 상속을 통해서 생성된 클래스의 경우 생성자 호출시 superclass의 생성자를 자동 또는 수동으로 호출한다. 생성되는 클래스의 생성자에서 명시적으로 superclass의 생성자를 호출하지 않은 경우, 생성자 시작부분에서 superclass의 기본 생성자를 자동 호출한다.
 
@@ -1208,18 +1411,18 @@ Compile 결과는? 이유는?
 
 
 
-### Using Objects
+### 객체 사용하기
 
-오브젝트를 이용한 작업은 
+객체를 이용한 작업은 
 
 * 필드 값을 사용하거나 변경
 * method를 호출
 
 
 
- #### Referencing an Object's Fields
+ #### 객체 필드 참조 하기
 
-오브젝트 필드는 
+객체 필드는 
 
 * 이름으로 접근되어 모호하지 않은 이름 사용
 
@@ -1270,24 +1473,25 @@ Compile 결과는? 이유는?
   }
   ~~~
 
-  * Dot 연산자를 이용해 오브젝트 필드 참조
-  * rectOne.width와 rectTwo.width는 오브젝트가 다르므로 서로 다른 width가 됨
+  * Dot 연산자를 이용해 객체 필드 참조
+  * rectOne.width와 rectTwo.width는 객체가 다르므로 서로 다른 width가 됨
 
-* 오브젝트 참조를 위한 변수가 없어도 접근 가능
+* 객체 참조를 위한 변수가 없어도 접근 가능
 
   ~~~java
   int height = new Rectangle().height;
   ~~~
 
-  * new 연산자에 의해 오브젝트 생성되어 반환
-  * 반환된 오브젝트의 height 필드 참조 
-  * 생성된 오브젝트는 더 이상의 참조가 없으므로, 자원 재활용 
-
+  * new 연산자에 의해 객체 생성되어 반환
+  * 반환된 객체의 height 필드 참조 
+  * 생성된 객체는 더 이상의 참조가 없으므로, 자원 재활용 
+  * **변수는 생성된 객체를 참고할 수 있도록 도와줄 뿐 실제 객체는 아님**
+  
   
 
-#### Calling an Object's Methods
+#### 객체 method 호출하기
 
-오브젝트 method는
+객체 method는
 
 * Method가 수행하는 작업을 알 수 있도록 이름 사용
 
@@ -1298,7 +1502,7 @@ Compile 결과는? 이유는?
   int areaOfRactangle = rectOne.getArea();
   ~~~
 
-  * void move(int x, int y) - rectOne 오브젝트를 특정 위치(x, y)로 이동
+  * void move(int x, int y) - rectOne 객체를 특정 위치(x, y)로 이동
   * int getArea(); - rectOne의 width와 height를 이용해 계산한 영역 크기 
 
 * 필드와 동일하게 dot 연산자를 이용해 호출 가능
@@ -1307,32 +1511,33 @@ Compile 결과는? 이유는?
   rectOne.move(40, 70);
   ~~~
 
-  * rectOne 오브젝트에서 지원하는 method 중에서 move를 호출
+  * rectOne 객체에서 지원하는 method 중에서 move를 호출
 
-* 필드와 동일하게 오브젝트 참조 변수가 없이도 접근 가능
+* 필드와 동일하게 객체 참조 변수가 없이도 접근 가능
 
   ~~~java
   int areaOfRactangle = new Rectangle(100, 50).getArea();
   ~~~
 
-  * new Rectangle(100, 50)을 통해 오브젝트가 생성되고, 생성된 오브젝트에 dot 연산자를 적용해 method를 호춣
-  * Reference type 변수는 변수 그 자체가 오브젝트를 나타낸 것은 아니고, 오브젝트를 참조만 하고 있다.
+  * new Rectangle(100, 50)을 통해 객체가 생성되고, 생성된 객체에 dot 연산자를 적용해 method를 호춣
+  * Reference type 변수는 변수 그 자체가 객체를 나타낸 것은 아니고, 객체를 참조만 하고 있다.
 
 
 
 #### The Garbage Collector
 
-* Java runtime 환경에서 더 이상 사용되지 않는 오브젝트는 자동으로 삭제
-* 더 이상 사용되지 않는 오브젝트란 더 이상 참조가 없다는 것으로 Reference type 변수나 dot 연산자 등의 해당 오브젝트와의 관계가 없다는 뜻
+* Java에는 생성된 객체를 명시적으로 삭제하겠다는 명령이 없음
+  * 객체 생성을 위한 new는 있지만, 삭제를 위한 destroy, delete, remove 등은 없음
+
+* Java runtime 환경에서 더 이상 사용되지 않는 객체는 자동으로 삭제
+* 더 이상 사용되지 않는 객체란 더 이상 참조가 없다는 것으로 Reference type 변수나 dot 연산자 등의 해당 객체와의 관계가 없다는 뜻
 * 참조가 없을때 즉시 리소스 반환을 하지는 않고, 일정 조건(시간 간격)을 만족할때 자동 수행된다.
 
 * **보다 자세한 내용은 특강에서 진행**
 
 
 
-## More on Classes
-
-아래의 내용에 대해 더 많은 것을 확인해 보자.
+## 클래스에 관해 조금 더 알아보기
 
 * Method에서의 값 반환
 * this keyword
@@ -1341,7 +1546,7 @@ Compile 결과는? 이유는?
 
 
 
-### Returning a Value from a Method
+### Method에서의 값 반환
 
 Method에서 자신을 호출한 코드로 반환되는 것은 
 
@@ -1355,7 +1560,7 @@ Method 반환 type은
 
 * Method 선언시 지정
 * 반환 값이 없는 경우 void로 선언
-* return문을 통해 반환 되는 값의 type과 같아야 한다
+* return문을 통해 반환 되는 값의 type이거나 호환되는 type
 
 
 
@@ -1374,7 +1579,7 @@ return 문은
   }
   ~~~
 
-* Method의 수행 결과는 반환할 수 있으나, method 선언에서 지정된 type이어야 하며
+* Method의 수행 결과는 반환할 수 있으나, method 선언에서 지정된 type이거나 호환되는 type이고, 
 
   ~~~java
   <type> method() {
@@ -1410,26 +1615,27 @@ return 문은
 
 
 
-#### Returning a Class or Interface
+#### Class 또는 Interface 반환
 
 * Primitive data type뿐만 아니라 reference type 값도 반환 가능
-
-
 
 // TODO : covariant return type 설명 추가
 
 
 
-### Using the this Keyword
+### this keyword
 
 this는
 
-* Instance mthod 또는 생성자 내에서 현재의 오브젝트를 참조하기 위해 사용
-* 클래스의 외부 코드에서는 access modifier에 따라 접근 가능이 결정되지만, this는 해당 인스턴스나 생성자내에서 오브젝트의 모든 멤버들 참조 가능
+* Method 또는 생성자 내에서 현재 객체 참조를 위해 지원
 
-#### Using this with a Field
+*  Method나 생성자내에서 현재 객체의 모든 멤버들 참조 가능
 
-this keyword를 사용하는 대표적인 예가 생성자이다.
+  
+
+#### 필드와 사용하기
+
+this를 사용하는 대표적인 예가 생성자이다.
 
 앞서 parameter 이름을 설명하며, 이름 중복에 따른 shadowing 필드에 대해 보았다. 
 
@@ -1486,7 +1692,7 @@ public class Point {
 
 
 
-#### Using this with a Constructor
+#### 생성자로 사용하기
 
 생성자를 작성하다보면 parameter의 구성에 따라 여러 생성자를 선언해야 할때가 있다.
 
@@ -1496,31 +1702,148 @@ public class Point {
 
 이때 코드는 자신의 생성자를 호출하기 this keyword사용이 가능하다.
 
-##### 예제. Explicit constructor invocation을 이용해 중복 코드를 제거하라
+##### 예제. 다음 코드를 보고, 명시적 생성자 호출을 통해 중복 코드 제거에 대해 알아보자.
+
+* Point는 x와 y를 받아 생성할 수 있다.
+* Point는 다른 point를 받아 생성할 수 있다.
+* Point 생성시 값이 없을 경우, 초기 값을 (0, 0)으로 한다.
+* Point는 이동한 횟수를 갖는다.
+* Point는 x와 y의 변화량을 통해 이동할 수 있다.
 
 ~~~java
-public class Rectangle {
-    public int width = 0;
-    public int height = 0;
-    public Point origin;
+package example;
 
-    // four constructors
-    public Rectangle() {
-      	this(new Point(0, 0), 0, 0);
+public class Point {
+    int x;
+    int y;
+    int moveCount;
+
+    //constructor
+    public Point() {
+      	x = 0;
+      	y = 0;
+        moveCount = 0;
+    }
+
+    public Point(Point point) {
+      	x = point.x;
+      	y = point.y;
+        moveCount = 0;
 
     }
-    public Rectangle(Point p) {
-      	this(p, 0, 0);
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+        moveCount = 0;
     }
+
+    public void move(int dx, int dy) {
+        x += dx;
+        y += dy;
+        moveCount++;
+    }
+
+    public int getMoveCount() {
+        return  moveCount;
+    }
+}
+~~~
+
+Point 클래스에는 총 3개의 생성자가 정의되어 있고, 생성자에서는 moveCount = 0 라는 동일한 과정을 반복하고 있다.
+
+또한, Point 클래스에 새로운 필드를 추가할 경우, 3개의 생성사에 동일한 과정을 추가해야 하고  과정이 복합할 경우 오류가 발생할 확률도 높아 진다.
+
+
+
+명시적 생성자 호출은 이러한 문제점을 해결 할 수 있다.
+
+다음 코드는 앞서의 코드에 명시적 생성자 호출을 적용한 것이다.
+
+~~~java
+package example;
+
+public class Point {
+    int x;
+    int y;
+    int moveCount;
+
+    //constructor
+    public Point() {
+        this(0, 0);
+    }
+
+    public Point(Point point) {
+        this(point.x, point.y);
+    }
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+        moveCount = 0;
+    }
+
+    public void move(int dx, int dy) {
+        x += dx;
+        y += dy;
+        moveCount++;
+    }
+
+    public int getMoveCount() {
+        return  moveCount;
+    }
+}
+~~~
+
+코드상에 moveCount를 초기화하는 부분은 한 곳에만 존재하며, 필드 추가의 경우에도 최소한의 코드 추가로 가능하다.
+
+이로서 중복 코드는 제거되었고, 중복 코드로 인해 수정시 부분 수정에 따른 오류 발생의 가능성 또한 줄였다.
+
+### 
+
+##### 문제. 명시적 생성자 호출을 이용해 Rectangle 클래스를 정의해 보자.
+
+* 다음 조건을 만족하는 Rectangle 클래스를 정의해 본다.
+
+  * Point 를 중심으로 넓이와 높이를 갖는다.
+  * 아무런 설정 값이 없는 경우, 중심 (0,0), 넓이 0, 높이 0으로 한다.
+  * 중심 위치만 받아 생성할 수 있다.
+  * 중심 위치, 넓이, 높이를 받아 생성할 수 있다.
+  * 넓이와 높이만 받을 수 있다. 이때, 중심 위치는 (0,0)으로 한다.
+
   
-    public Rectangle(int w, int h) {
-      	this(new Point(0, 0), w, h);
+
+~~~java
+package example;
+
+public class Rectangle {
+    int width = 0;
+    int height = 0;
+    Point origin;
+
+    // 4개의 생성자
+    public Rectangle() {
+		// 코드 추가 시작
+      
+    // 코드 추가 끝
     }
 
-    public Rectangle(Point p, int w, int h) {
-        origin = p;
-        width = w;
-        height = h;
+  	public Rectangle(Point p) {
+		// 코드 추가 시작
+      
+    // 코드 추가 끝
+  	}
+  
+    public Rectangle(int width, int height) {
+ 		// 코드 추가 시작
+      
+    // 코드 추가 끝
+    }
+
+    public Rectangle(Point point, int width, int height) {
+		// 코드 추가 시작
+      
+    // 코드 추가 끝
     }
 
     // a method for moving the rectangle
@@ -1538,15 +1861,7 @@ public class Rectangle {
 
 
 
-Rectangle 클래스를 수정해 보았다.
-
-4개의 생성자중 3개는 explicit constructor invocation를 사용하여 작성하였다.
-
-이로서 중복 코드는 제거되었고, 중복 코드로 인해 수정시 부분 수정에 따른 오류 발생의 가능을 줄였다.
-
-
-
-### Controlling Access to Members of a Class
+### 멤버에 대해 접근 제어하기
 
 Access control의 수준
 
@@ -1571,14 +1886,11 @@ Access control의 수준
   * default
 
     * 동일 패키지 내에서만 허용
-
+    * keyword 없음. Public, protected, private를 사용하지 않으면 적용됨
+  
   * private
-
+  
     * 동일 클래스 필드나 method에 대해서만 허용
-
-
-
-// TODO : Access Modifier는 앞에서 설명함. 여기로 가져 올지는 고민 중
 
 
 
@@ -1591,33 +1903,37 @@ Access control의 수준
 
 ​     
 
-### Understanding Class Members
+### 클래스 멤버 이해하기
 
+* 클래스로의 인스턴스가 아닌 클래스에 포함되어 있은 멤버
 * static keyword의 활용
+
 * Instance member vs class member
 
 
 
 #### Class Variables
 
-* 클래스에서 instance가 만들어지면 각 필드는 클래스에서 선언한 필드의 복사본
-
-* Instance마다 별도의 메모리 영역을 할당하여 각기 다른 변수로 만들어짐
+* 클래스에서 instance가 만들어지면 각 instance는 클래스에 선언된 변수들과 같은 복사본을 가짐
+* 즉, Instance마다 별도의 메모리 영역을 할당하여 각기 다른 변수로 만들어짐
 
 
 
 ##### static keyword의 활용
 
-* 같은 클래스로 만들어진 오브젝트간에 공통으로 사용이 필요한 변수가 필요한 경우
+* 같은 클래스로 만들어진 객체간에 공통으로 사용이 필요한 변수가 필요한 경우
 * static keyword가 적용된 변수를 static 필드 또는 클래스 변수라고함
-* 개별 오브젝트와의 연결관계를 가지지 않고, 클래스와의 연결 관계를 가짐
-* 해당 클래스로 부터 생성된 오브젝트를 통해서도 접근 가능하지만,
-* 클래스만을 이용해서도 접근 가능하여 access modifier에 따라 별도의 오브젝트 생성 없이도 접근 가능 
+* 개별 객체와의 연결관계를 가지지 않고, 클래스와의 연결 관계를 가짐
+* 해당 클래스로 부터 생성된 객체를 통해서도 접근 가능하지만,
+* 클래스만을 이용해서도 접근 가능하여 access modifier에 따라 별도의 객체 생성 없이도 접근 가능 
 * 클래스 변수에  dot 연산자를 이용해 접근할 것을 권장함
 
 
 
-##### 예제. 자전거에 id를 두고, static field를 이용해 자전거가 생성될때 마다 새로운 id를 설정하라.
+##### 예제. 다음 코드를 보고, 클래스 변수를 선언하고 활용한 것에 대해 알아보자.
+
+* Bicycle 클래스에서는 instance생성될때 마다 공유의 id를 부여한다.
+* id는 생성된 instance의 갯수와 연관 관계를 갖는다.
 
 ~~~java
 public class Bicycle {
@@ -1652,34 +1968,137 @@ public class Bicycle {
 
 
 
+##### 문제. Rectangle 클래스를 수정하여, 생성된 instance를 배열에 저장하도록 한다.
+
+* 초기 배열의 갯수는 10개로 설정한다.
+
+
+
 #### Class Methods
 
 * 클래스 변수와 마찬가지로 클래스 method 지원
 *  클래스 이름에 dot 연산자를 사용해 호출하는 것을 권자함
-  * 오브젝트에 dot 연산자 적용도 가능함
+  * 객체에 dot 연산자 적용도 가능함
 * 클래스 method이므로 method내에서 this 사용 불가
-  *  즉, 클래스 method에서는 오브젝트의 변수나 method의 직접적인 접근이 불가능하다
+  *  즉, 클래스 method에서는 객체의 변수나 method의 직접적인 접근이 불가능하다
 
 
 
-// TODO : 예제 추가
+##### 예제. 다음 코드를 보고, 클래스 method에 대해 알아보자.
+
+* 클래스 변수 설명에서 Bicycle 클래스의 instance가 생성될때마다 클래스 변수를 통해 갯수를 관리하였다.
+* 이를 클래스 method를 이용해 가져올 수 있도록 하자.
+
+~~~java
+public class Bicycle {
+        
+    private int cadence;
+    private int gear;
+    private int speed;
+    private int id;
+    private static int numberOfBicycles = 0;
+        
+    public Bicycle(int startCadence, int startSpeed, int startGear){
+        gear = startGear;
+        cadence = startCadence;
+        speed = startSpeed;
+
+        // increment number of Bicycles
+        // and assign ID number
+        id = ++numberOfBicycles;
+    }
+
+    // new method to return the ID instance variable
+    public int getID() {
+        return id;
+    }
+  
+  	public static int getNumberOfBicycles() {
+     	return	Bicycle.numberOfBicycles; 
+    } 
+        ...
+}
+~~~
+
+* getNumberOfBicycles method를 static을 이용해 클래스 method로 정의하였다.
+* 클래스 변수의 값을 돌려 준다.
+
+
+
+##### 문제. Rectangle 클래스를 수정하여, 클래스 method를 이용해 특정 instance를 찾을 수 있도록 하라.
+
+* Rectange 클래스에 id를 추가하여 instance 생성시마다 유일한 값을 부여한다.
+
+* 클래스 method getRectangle(int id) 를 이용해 요청한 id를 갖는 Rectangle 객체를 찾는다.
+
+* 해당 id를 갖는 객체가 없는 경우,  null을 반환한다.
+
+   
+
+~~~java
+package example;
+
+public class Rectangle {
+    int width = 0;
+    int height = 0;
+    Point origin;
+
+    // 4개의 생성자
+
+  ...
+}
+~~~
 
 
 
 #### Constants
 
 * 클래스 변수중 final이 적용된 변수
+
 * 이름은 대문자만으로 구성을 권장함
+
 * 이름에 둘이상의 단어 조합 필요한 경우, 밑줄(_)을 사용
-* compile time constant 란? // TODO : 확인
 
-~~~java
-class Math {
-	static final double PI = 3.141592653589793;
-	...
-}
-~~~
+* compile time constant 란? 
 
+  *  compile 시점에 값에 대해 명확하게 알 수 있는 상수
+
+  * 리터럴이 대표적인 예
+
+    ~~~java
+    jpublic final int maximumLoginAttempts = 5;
+    
+    public static void main(String[] args) {
+        PrintWriter printWriter = System.console().writer();
+        printWriter.println(ClassConstants.DEFAULT_USERNAME);
+    
+        CompileTimeVariables instance = new CompileTimeVariables();
+        printWriter.println(instance.maximumLoginAttempts);
+    
+        final String username = "baeldung" + "-" + "user";
+        printWriter.println(username);
+    }
+    ~~~
+
+    
+
+* runtime constant란?
+
+  * 아래와 같이 실행 중에 값이 결정되고, 결정된 값이 이후에 변경되지 않을 경우
+
+    ~~~java
+    public static void main(String[] args) {
+        Console console = System.console();
+    
+        final String input = console.readLine();
+        console.writer().println(input);
+    
+        final double random = Math.random();
+        console.writer().println("Number: " + random);
+    }
+    ~~~
+
+    
 
 
 #### 현재까지의 내용을 적용한  Bicycle Class
@@ -1746,41 +2165,251 @@ public class Bicycle {
 
 
 
-### Initializing Fields
+### 필드 초기화하기
 
 * 클래스나 인스턴스에서 필드 초기화 방법은 다양하게 제공됨
-  * 변수 선언과 초기화
+  * 생성자
+  * 변수 선언에서의 초기화
   * static 초기화 블록
   * 인스턴스 멤버 초기화
 
 
 
-##### 변수 선언과 초기화
+#### 생성자를 이용한 초기화
+
+* 가장 일반적인 방법
+* class  member에 대해서는 적합하지 않을 수 있음
+  * 새로운 instance가 생성할때 마다 호출됨
+  * 처음 호출되었는지 확인 과정 필요
+
+
+
+##### 예제. 다음 코드를 보고, 생성자를 이용한 초기화를 알아 보자.
+
+~~~java
+package example;
+
+class World {
+    static boolean initialized ;
+    static World[] worlds;
+    static int numberOfWorlds;
+    Ball[] balls;
+    int numberOfBalls;
+
+    public World() {
+        if (!World.initialized) {
+            World.worlds = new World[10];
+            World.numberOfWorlds = 0;
+            World.initialized = true;
+        }
+
+        for(int i = 0 ; i < World.worlds.length ; i++) {
+            if (World.worlds[i] == null) {
+                World.worlds[i] = this;
+                World.numberOfWorlds++;
+                break;
+            }
+        }
+
+        balls = new Ball[10];
+        numberOfBalls = 0;
+    }
+
+    public static int getNumberOfWorlds() {
+        return  numberOfWorlds;
+    }
+
+    public static World getWorld(int index) {
+        return  worlds[index];
+    }
+
+    public int getNumberOfBalls() {
+        return  numberOfBalls;
+    }
+
+}
+
+class Ball {
+    int x;
+    int y;
+    int radius;
+
+    public Ball() {
+        x = 0;
+        y = 0;
+        radius = 0;
+    }
+
+    public Ball(int x, int y , int radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+}
+
+public class InitializingFieldDemo {
+    public static void main(String[] args) {
+        World world = new World();
+
+        System.out.println("World count : " + World.getNumberOfWorlds());
+        System.out.println("Ball count : " + world.getNumberOfBalls());
+    }
+}
+~~~
+
+* initialized의 용도는?
+* World 클래스의 클래스 변수들은 언제 초기화 되나?
+* 이 코드에서의 문제점은?
+
+
+
+#### 변수 선언에서의 초기화
 
 * 변수의 선언에서 초기값 제공
 
   ~~~java
-  public class BedAndBreakfast {
+  package example;
   
-      // initialize to 10
-      public static int capacity = 10;
+  class World {
+      static World[] worlds = new World[10];
+      static int numberOfWorlds = 0;
+      Ball[] balls = new Ball[10];
+      int numberOfBalls = 0;
   
-      // initialize to false
-      private boolean full = false;
+      public World() {
+          for(int i = 0 ; i < World.worlds.length ; i++) {
+              if (World.worlds[i] == null) {
+                  World.worlds[i] = this;
+                  World.numberOfWorlds++;
+                  break;
+              }
+          }
+      }
+  
+      public static int getNumberOfWorlds() {
+          return  numberOfWorlds;
+      }
+  
+      public static World getWorld(int index) {
+          return  worlds[index];
+      }
+  
+      public int getNumberOfBalls() {
+          return  numberOfBalls;
+      }
+  
+  }
+  
+  class Ball {
+      int x;
+      int y;
+      int radius;
+  
+      public Ball() {
+          x = 0;
+          y = 0;
+          radius = 0;
+      }
+  
+      public Ball(int x, int y , int radius) {
+          this.x = x;
+          this.y = y;
+          this.radius = radius;
+      }
+  }
+  
+  public class InitializingFieldDemo {
+      public static void main(String[] args) {
+          System.out.println("World count : " + World.getNumberOfWorlds());
+      }
   }
   ~~~
 
 * 클래스 변수나 인스턴스 변수에 대해 동일하게 적용
 
-  * capacity는 클래스 변수의 초기화
-  * full은 인스턴스 변수의 초기화
+  * 클래스 변수인 words와 numberOfWorlds를 선언하면서 초기화. 
+  * instance 변수인 balls와 numberOfBalls를 선언하면서 초기화.
 
-* 문제점
+* 단점
 
   * 고정된 단순 초기화만 가능
-  *  오류 처리 불가
 
-##### 정적 초기화 블록
+
+
+##### 예제. 클래스를 수정하여 아래와 같이 World instance 생성시 Ball instance의 최대 갯수를 주고 World에서 가질 수 있는 Ball 배열을 생성하려 한다. 프로그램 실행과 함께 World가 생성될 수 있도록 클래스 변수도 선언 과정에서 초기화 하였다. 문제점을 확인해 보자.
+
+~~~java
+package example;
+
+class World {
+    static World[] worlds = new World[]{new World(0)};
+    static int numberOfWorlds = 0;
+    Ball[] balls;
+    int numberOfBalls;
+
+    public World(int initCount) {
+        for(int i = 0 ; i < World.worlds.length ; i++) {
+            if (World.worlds[i] == null) {
+                World.worlds[i] = this;
+                World.numberOfWorlds++;
+                break;
+            }
+        }
+
+        balls = new Ball[initCount];
+        numberOfBalls = 0;
+    }
+
+    public static int getNumberOfWorlds() {
+        return  numberOfWorlds;
+    }
+
+    public static World getWorld(int index) {
+        return  worlds[index];
+    }
+
+    public int getNumberOfBalls() {
+        return  numberOfBalls;
+    }
+
+}
+
+class Ball {
+    int x;
+    int y;
+    int radius;
+
+    public Ball() {
+        x = 0;
+        y = 0;
+        radius = 0;
+    }
+
+    public Ball(int x, int y , int radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+}
+
+public class InitializingFieldDemo {
+    public static void main(String[] args) {
+        try {
+        System.out.println("World count : " + World.getNumberOfWorlds());
+        } catch(Exception e) {
+            System.out.println("오류 발생 : " + e);
+        }
+    }
+}
+~~~
+
+* try-catch는 배우지 않았으므로 넘어간다.
+  * try 블록 내에서 문제 발생시 catch 블록으로 넘어가 실행된다
+* 특별히 instance 생성은 없다. 그런데, 왜 문제가 생길까?
+
+
+
+#### 정적 초기화 블록
 
 * static keyword로 블록을 설정하여 초기화
 
@@ -1796,7 +2425,89 @@ public class Bicycle {
 
 
 
-##### 클래스 method를 이용한 초기화
+##### 예제. 다음 코드는 위에서 발생한 문제를 정적 초기화 블록을 이용해 해결한 것이다. 코드를 보고 확인해 보자.
+
+~~~java
+package example;
+
+class World {
+    static World[] worlds;
+    static int numberOfWorlds;
+    static {
+        try {
+            worlds = new World[]{new World(0)};
+            numberOfWorlds = 0;
+        } catch(Exception e) {
+            System.out.println("Exception 발생");
+            worlds = new World[10];
+            numberOfWorlds = 0;
+        }
+    }
+    Ball[] balls;
+    int numberOfBalls;
+
+    public World(int initCount) {
+        for(int i = 0 ; i < World.worlds.length ; i++) {
+            if (World.worlds[i] == null) {
+                World.worlds[i] = this;
+                World.numberOfWorlds++;
+                break;
+            }
+        }
+
+        balls = new Ball[initCount];
+        numberOfBalls = 0;
+    }
+
+    public static int getNumberOfWorlds() {
+        return  numberOfWorlds;
+    }
+
+    public static World getWorld(int index) {
+        return  worlds[index];
+    }
+
+    public int getNumberOfBalls() {
+        return  numberOfBalls;
+    }
+
+}
+
+class Ball {
+    int x;
+    int y;
+    int radius;
+
+    public Ball() {
+        x = 0;
+        y = 0;
+        radius = 0;
+    }
+
+    public Ball(int x, int y , int radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+}
+
+public class InitializingFieldDemo {
+    public static void main(String[] args) {
+        try {
+        System.out.println("World count : " + World.getNumberOfWorlds());
+        } catch(Exception e) {
+            System.out.println("오류 발생 : " + e);
+        }
+    }
+}
+~~~
+
+* 앞에서와 동일하게 World 배열 초기화에서 오류가 발생하는가?
+* 두 프로그램을 실행 결과 차이는?
+
+
+
+#### 클래스 method를 이용한 초기화
 
 * 정적 초기화 블록 대신 private 클래스 method를 정의한 후 클래스 변수 선언시 호출
 
@@ -1810,10 +2521,95 @@ public class Bicycle {
       }
   }
   ~~~
+  
+  * 정적 초기화 블록과 유사하지만, 블록에 이름이 붙어 있어 상속 후에도 호출 가능
 
 
 
-##### Instance member 초기화
+##### 예제. 다음 코드는 정적 블록을 사용해 초기화한 과정을  다시 사용하기 위해 method로 구현한 것이다. 코드를 보고 확인해 보자.
+
+~~~java
+package example;
+
+class World {
+    static World[] worlds = World.init();
+    static int numberOfWorlds = 0;
+    public static World[] init() {
+        System.out.println("init 호출");
+        World [] worlds;
+        try {
+            worlds = new World[]{new World(0)};
+        } catch(Exception e) {
+            System.out.println("Exception 발생");
+            worlds = new World[10];
+        }
+
+        return worlds;
+    }
+    Ball[] balls;
+    int numberOfBalls;
+
+    public World(int initCount) {
+        for(int i = 0 ; i < World.worlds.length ; i++) {
+            if (World.worlds[i] == null) {
+                World.worlds[i] = this;
+                World.numberOfWorlds++;
+                break;
+            }
+        }
+
+        balls = new Ball[initCount];
+        numberOfBalls = 0;
+    }
+
+    public static int getNumberOfWorlds() {
+        return  numberOfWorlds;
+    }
+
+    public static World getWorld(int index) {
+        return  worlds[index];
+    }
+
+    public int getNumberOfBalls() {
+        return  numberOfBalls;
+    }
+
+}
+
+class Ball {
+    int x;
+    int y;
+    int radius;
+
+    public Ball() {
+        x = 0;
+        y = 0;
+        radius = 0;
+    }
+
+    public Ball(int x, int y , int radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+}
+
+public class InitializingFieldDemo {
+    public static void main(String[] args) {
+        try {
+        System.out.println("World count : " + World.getNumberOfWorlds());
+
+        World.init();
+        } catch(Exception e) {
+            System.out.println("오류 발생 : " + e);
+        }
+    }
+}
+~~~
+
+
+
+#### Instance member 초기화
 
 * 일반적으로 생성자에서 instance 변수 초기화
 
@@ -1832,15 +2628,160 @@ public class Bicycle {
   }
   ~~~
 
-  * subclass에서 상속후 재정의가 불가능하지만, superclass의 초기화를 호출하여 초기화 가능
+  * subclass에서 재정의할 수 없지만, 초기화를 호출하여 초기화 가능
+
+
+
+##### 예제. 다음 코드를 보고, method를 이용한  instance member 초기화에 대해 알아보자.
+
+~~~java
+package example;
+
+class World {
+    static World[] worlds = World.init();
+    static int numberOfWorlds = 0;
+    public static World[] init() {
+        System.out.println("init 호출");
+        World [] worlds;
+        try {
+            worlds = new World[]{new World(0)};
+        } catch(Exception e) {
+            System.out.println("Exception 발생");
+            worlds = new World[10];
+        }
+
+        return worlds;
+    }
+    Ball[] balls = initBalls();
+    int numberOfBalls = balls.length;
+
+    public World(int initCount) {
+        for(int i = 0 ; i < World.worlds.length ; i++) {
+            if (World.worlds[i] == null) {
+                World.worlds[i] = this;
+                World.numberOfWorlds++;
+                break;
+            }
+        }
+    }
+
+    protected Ball[] initBalls() {
+        System.out.println("initballs");
+        return new Ball[]{new Ball(0, 0, 10)};
+    }
+
+    public static int getNumberOfWorlds() {
+        return  numberOfWorlds;
+    }
+
+    public static World getWorld(int index) {
+        return  worlds[index];
+    }
+
+    public int getNumberOfBalls() {
+        return  numberOfBalls;
+    }
+
+}
+
+class Ball {
+    int x;
+    int y;
+    int radius;
+
+    public Ball() {
+        x = 0;
+        y = 0;
+        radius = 0;
+    }
+
+    public Ball(int x, int y , int radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+}
+
+public class InitializingFieldDemo {
+    public static void main(String[] args) {
+        try {
+        System.out.println("World count : " + World.getNumberOfWorlds());
+        World.init();
+
+        } catch(Exception e) {
+            System.out.println("오류 발생 : " + e);
+        }
+    }
+}
+~~~
+
+* World의 balls member를 initBalls method를 이용해 초기화 한다.
+* World 클래스를 확장하여 새로운 클래스를 정의할때 initBalls method를 재정의한다면 어떠한 문제가 발생할까?
+  * 이를 방지하기 위한 조치로는 무엇이 있을까?
 
 
 
 ### Summary of Creating and Using Classes and Object
 
-// TODO : 다시 확인
 
- 
+
+#### 클래스
+
+~~~java
+[<Access Modifier>] [static] class <class name> {
+    [<Access Modifier>] [static] [final] [<data type>] <field name>, <field name>,...;
+
+    [<Access Modifier>] <class name>(<parameter list>) {
+      	...
+    }
+    [<Access Modifier>] [static] [final] [<return type] <method name>(<parameter list>) {
+        ...
+    }
+}
+~~~
+
+*  선언은 클래스 이름을 지정하고 클래스 본문을 중괄호로 묶는다.
+* 클래스 이름 앞에 한정자가 올 수 있다. 
+* 클래스 본문에는 클래스의 필드, 메서드 및 생성자가 포함된다.
+* 클래스는 필드를 사용하여 상태 정보를 포함하고 메서드를 사용하여 동작을 구현한다. 
+* 클래스의 새 인스턴스를 초기화하는 생성자는 클래스 이름을 사용하고 반환 유형이 없는 메서드처럼 보인다.
+
+* public선언 과 같은 acccess modifier를 사용하여 동일한 방식으로 클래스 및 멤버에 대한 액세스를 제어한다 .
+* static멤버 선언의 키워드를 사용하여 클래스 변수 또는 클래스 메서드를 지정하고,. 선언되지 않은 멤버는 암시적으로 인스턴스 멤버이다.
+* 클래스 변수는 클래스의 모든 인스턴스에서 공유되며 클래스 이름과 인스턴스 참조를 통해 액세스할 수 있. 
+* 클래스의 인스턴스는 인스턴스 참조를 통해 액세스해야 하는 각 인스턴스 변수의 자체 복사본을 가져온다.
+
+
+
+#### 오브젝트
+
+* new연산자와 생성자를 사용하여 클래스에서 개체를 만든다.
+* new 연산자는 생성된 개체에 대한 참조를 반환한다.
+* 참조를 변수에 할당하거나 직접 사용할 수 있다.
+* 선언된 클래스 외부의 코드에서 액세스할 수 있는 인스턴스 변수 및 메서드는 이름을 사용하여 참조할 수 있다.
+* 인스턴스 변수의  이름은 다음과 같다.
+  ```
+  objectReference.variable_name
+  ```
+  메서드의 이름은 다음과 같다.
+  ```
+  objectReference.methodName(argumentList)
+  ```
+  또는:
+  ```
+  objectReference.methodName()
+  ```
+
+
+
+#### Garbage Collector
+
+* 사용하지 않는 개체를 자동으로 정리한다.
+* 프로그램이 더 이상 개체에 대한 참조를 보유하지 않으면 개체는 사용되지 않는다.
+* 참조를 보유하는 변수를 null로 설정하여 참조를 명시적으로 삭제할 수 있다.
+* primitive data type은 오브젝트 아니므로 대상이 되지 않는다.
+
+
 
 ## Nested Classes(중첩 클래스)
 
@@ -1886,7 +2827,7 @@ public class Bicycle {
   }
   ~~~
 
-* 외부 클래스로 부터 생성된 오브젝트에서 내부 클래스 생성
+* 외부 클래스로 부터 생성된 객체에서 내부 클래스 생성
 
 * 외부 클래스의 멤버를 명시적으로 접근할 필요가 있을 경우, this 앞에 클래스 이름을 붙여서 사용
 
@@ -1938,7 +2879,7 @@ public class Bicycle {
 * OuterClass의 생성자에서 InnerClass 인스턴스 생성
 * InnerClass의 생성자에서 DoubleInnerClass 인스턴스 생성
 * 내부 클래스 생성시 new는 외부 클래스 오즈젝트의 new
-* 외부 클래스 오브젝트 멤버 접근을 위해서는 <외부 클래스 이름>.this로 접근 가능
+* 외부 클래스 객체 멤버 접근을 위해서는 <외부 클래스 이름>.this로 접근 가능
   * 이름이 중첩되지 않을때는 생략 가능
 
 
@@ -1947,7 +2888,7 @@ public class Bicycle {
 
 * 클래스의 static 멤버와 동일하게 외부 클래스의 static 멤버에 대해 접근 가능
 * 외부 클래스의 인스턴스 멤버에 대해서는 일반 클래스와 동일하게 access level에 따라 접근 가능
-* 일반 클래스와 동일한 방식으로 오브젝트 생성
+* 일반 클래스와 동일한 방식으로 객체 생성
 
 
 
@@ -2038,7 +2979,7 @@ Static outer field
 
 * InnerClass의 access modifier level을 public으로 수정하고, OuterClass의 외부에서 생성해 보자. 
 
-* OuterClass 오브젝트내에서 StaticInnerClass의 인스턴스를 생성하고, OuterClass 오브젝트의 instance 변수를 참조해 보자.
+* OuterClass 객체내에서 StaticInnerClass의 인스턴스를 생성하고, OuterClass 객체의 instance 변수를 참조해 보자.
 
 // TODO : 추가 
 
